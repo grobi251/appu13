@@ -1,0 +1,3 @@
+Vereinslogos der Gegner hier ablegen, Dateiname = EHV-Kürzel:
+EAD.png, NEV.png, TRO2.png, RIA.png, NEU.png, ECBL.png, LHH.png, DIN.png, EVD2.png, ESS.png
+PNG mit transparentem Hintergrund, ca. 128x128 Pixel. Fehlt eine Datei, zeigt die App das Kürzel.

@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071b33">
+<meta name="author" content="Vorlage">
+<title>Grizzlys U13 – ESV Grizzlys Bergkamen</title>
+<link rel="icon" id="favicon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#071b33; --navy2:#0d2a4d; --navy3:#14396a;
+  --ice:#5aa2e6; --ice2:#cfe3f7; --amber:#ffb703;
+  --bg:#eef3f8; --card:#fff; --ink:#0b1b2e; --muted:#5b6b7e; --line:#dbe3ec;
+  --win:#1f9d55; --loss:#d64545; --ot:#e0a100;
+  --r:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Barlow,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.cond{font-family:"Barlow Condensed",Barlow,sans-serif;letter-spacing:.01em}
+button{font:inherit;cursor:pointer}
+a{color:var(--navy3)}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px}
+
+/* Tipp banner */
+#tippBanner{background:linear-gradient(90deg,var(--amber),#ffd166);color:var(--navy);display:none}
+#tippBanner .wrap{display:flex;gap:10px;align-items:center;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+#tippBanner strong{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.15rem}
+#tippBanner small{display:block;opacity:.8;font-size:.8rem}
+#tippBanner .grow{flex:1;min-width:180px}
+.chip{border:0;border-radius:999px;padding:7px 13px;font-weight:600;background:rgba(7,27,51,.1);color:inherit}
+.chip.solid{background:var(--navy);color:#fff}
+.x{background:none;border:0;font-size:1.4rem;line-height:1;color:inherit;padding:4px 6px}
+
+/* Header */
+header{background:radial-gradient(120% 140% at 0% 0%,var(--navy3) 0%,var(--navy) 60%);color:#fff;padding:18px 0 0}
+.head{display:flex;gap:14px;align-items:center}
+.logo{width:78px;height:78px;flex:none}
+.mini-logo{width:22px;height:22px;object-fit:contain;vertical-align:-5px;margin-right:5px}
+.match .ml{display:block;margin:0 auto 6px;width:60px;height:60px;object-fit:contain}
+.club{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ice2)}
+header h1{margin:0;font-size:2.1rem;line-height:1}
+.season{color:var(--ice);font-weight:600;font-size:.95rem}
+.info{margin-left:auto;align-self:flex-start;background:rgba(255,255,255,.12);border:0;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.1rem}
+.tag{font-family:"Barlow Condensed",Barlow,sans-serif;color:var(--amber);font-weight:700;margin:6px 0 10px;font-size:1rem}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -14px;padding:0 14px}
+nav::-webkit-scrollbar{display:none}
+nav a{color:#cfe2f5;text-decoration:none;padding:11px 14px;font-weight:600;border-bottom:3px solid transparent;white-space:nowrap}
+nav a.on{color:#fff;border-color:var(--ice)}
+
+main{padding:16px 0 30px}
+section.view{display:none}
+section.view.on{display:block}
+.card{background:var(--card);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:0 1px 2px rgba(7,27,51,.06),0 6px 18px rgba(7,27,51,.05)}
+.card h2{margin:0 0 10px;font-size:1.35rem}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+
+/* Next game */
+.next{background:linear-gradient(160deg,var(--navy2),var(--navy));color:#fff}
+.next .lbl{color:var(--ice);text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;font-weight:700}
+.match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:12px 0;text-align:center}
+.match .t{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.25rem;font-weight:700;line-height:1.1}
+.match .vs{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.6rem;color:var(--amber)}
+.countdown{display:flex;justify-content:center;gap:10px;margin:6px 0 12px}
+.countdown div{background:rgba(255,255,255,.08);border-radius:10px;padding:6px 10px;min-width:58px;text-align:center}
+.countdown b{display:block;font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.5rem}
+.countdown span{font-size:.7rem;color:var(--ice2);text-transform:uppercase}
+.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.act{background:rgba(255,255,255,.1);border:0;color:#fff;border-radius:12px;padding:10px 4px;font-weight:600;font-size:.85rem;text-decoration:none;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+.act i{font-style:normal;font-size:1.2rem}
+.card:not(.next) .act{background:var(--bg);color:var(--navy)}
+.sheet .act{background:var(--bg);color:var(--navy)}
+
+/* Teams */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tile{border:2px solid var(--line);background:#fff;border-radius:14px;padding:14px 6px;text-align:center}
+.tile b{display:block;font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.4rem;color:var(--navy)}
+.tile span{font-size:.78rem;color:var(--muted)}
+.tile.on{border-color:var(--navy);background:var(--navy);}
+.tile.on b{color:#fff}.tile.on span{color:var(--ice2)}
+
+.seg{display:flex;background:var(--bg);border-radius:12px;padding:4px;gap:4px;margin-bottom:12px;overflow-x:auto}
+.seg button{flex:1;border:0;background:transparent;border-radius:9px;padding:8px 10px;font-weight:600;color:var(--muted);white-space:nowrap}
+.seg button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-bottom:12px}
+.stats div{background:var(--bg);border-radius:12px;padding:10px 4px}
+.stats b{display:block;font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.7rem;line-height:1}
+.stats span{font-size:.75rem;color:var(--muted)}
+.form{display:flex;gap:6px;align-items:center}
+.dot{width:26px;height:26px;border-radius:50%;display:inline-grid;place-items:center;color:#fff;font-size:.75rem;font-weight:700}
+.W{background:var(--win)}.L{background:var(--loss)}.O{background:var(--ot)}
+
+/* Game list */
+.month{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.05rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:16px 4px 8px}
+.game{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 14px;margin-bottom:8px;border:0;width:100%;text-align:left;box-shadow:0 1px 2px rgba(7,27,51,.05)}
+.date{width:46px;text-align:center;flex:none}
+.date b{display:block;font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.5rem;line-height:1;color:var(--navy)}
+.date span{font-size:.72rem;color:var(--muted);text-transform:uppercase}
+.gmain{flex:1;min-width:0}
+.gmain .o{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gmain .m{font-size:.82rem;color:var(--muted)}
+.badge{font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--bg);color:var(--navy);margin-right:4px}
+.badge.h{background:var(--ice2)}
+.score{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.4rem;font-weight:800;padding:2px 10px;border-radius:10px;color:#fff;flex:none}
+.score.none{background:var(--bg);color:var(--muted);font-size:1rem;font-weight:600}
+
+/* Filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+select,input,textarea{font:inherit;border:1.5px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);width:100%}
+.filters select{width:auto;flex:1;min-width:120px}
+label.f{display:block;font-weight:600;font-size:.88rem;margin:12px 0 5px}
+
+/* Opponents */
+.opp{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.opp:last-child{border:0}
+.av{width:44px;height:44px;border-radius:12px;background:var(--navy);color:var(--ice);display:grid;place-items:center;font-family:"Barlow Condensed",Barlow,sans-serif;font-weight:800;flex:none}
+#map{height:300px;border-radius:12px;background:var(--bg);display:grid;place-items:center;margin-bottom:12px;overflow:hidden}
+
+/* Accordion */
+details{border-bottom:1px solid var(--line);padding:4px 0}
+details:last-child{border:0}
+summary{font-weight:700;padding:10px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";color:var(--muted);font-size:1.2rem}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 12px;color:#304256}
+
+.dl{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;border-top:0;text-align:left;color:inherit;text-decoration:none}
+.dl:last-child{border-bottom:0}
+.dl i{font-style:normal;font-size:1.5rem;width:40px;height:40px;border-radius:10px;background:var(--bg);display:grid;place-items:center;flex:none}
+
+.news{padding:10px 0;border-bottom:1px solid var(--line)}
+.news:last-child{border:0}
+.news b{display:block}
+
+footer{text-align:center;padding:10px 0 40px;font-size:.88rem}
+footer button{background:none;border:0;color:var(--navy3);text-decoration:underline;padding:4px 8px}
+
+/* Modals */
+.modal{position:fixed;inset:0;background:rgba(4,14,28,.55);display:none;align-items:flex-end;justify-content:center;z-index:50}
+.modal.on{display:flex}
+.sheet{background:#fff;width:100%;max-width:620px;max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px 18px 26px;animation:up .2s ease-out}
+@media(min-width:700px){.modal{align-items:center}.sheet{border-radius:20px}}
+@keyframes up{from{transform:translateY(30px);opacity:.5}to{transform:none;opacity:1}}
+.sheet-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.sheet-h h2{margin:0;font-size:1.45rem}
+.btns{display:flex;gap:10px;margin-top:18px}
+.btn{flex:1;border:0;border-radius:12px;padding:12px;font-weight:700;background:var(--bg);color:var(--navy)}
+.btn.p{background:var(--navy);color:#fff}
+.btn:disabled{opacity:.5}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.opt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 4px;text-align:center;font-weight:600;font-size:.88rem}
+.opt.on{border-color:var(--navy);background:var(--ice2)}
+.opt i{display:block;font-style:normal;font-size:1.3rem}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.tog{position:relative;width:48px;height:28px;flex:none}
+.tog input{opacity:0;width:0;height:0}
+.tog span{position:absolute;inset:0;background:#c8d3df;border-radius:999px;transition:.2s}
+.tog span::before{content:"";position:absolute;width:22px;height:22px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+.tog input:checked+span{background:var(--win)}
+.tog input:checked+span::before{transform:translateX(20px)}
+.tog input:disabled+span{opacity:.5}
+.legal h3{font-size:1.05rem;margin:16px 0 4px}
+.legal p{margin:0 0 8px;font-size:.92rem;color:#304256}
+.stepper{display:flex;align-items:center;justify-content:center;gap:10px}
+.stepper button{width:38px;height:38px;border-radius:50%;border:0;background:var(--bg);font-size:1.3rem;font-weight:700;color:var(--navy)}
+.stepper b{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:2.2rem;min-width:34px;text-align:center}
+.tipgrid{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;text-align:center;margin:10px 0}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:10px 0}
+.tabs button{border:0;background:var(--bg);border-radius:999px;padding:7px 13px;font-weight:600;white-space:nowrap}
+.tabs button.on{background:var(--navy);color:#fff}
+.arow{display:flex;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.arow input[type=number]{width:58px;text-align:center;padding:7px}
+.toast{visibility:hidden;position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;padding:11px 18px;border-radius:12px;font-weight:600;z-index:99;transition:.25s;max-width:90vw;text-align:center}
+.toast.on{visibility:visible;transform:translateX(-50%) translateY(0)}
+.note{background:#fff7e0;border-left:4px solid var(--amber);padding:10px 12px;border-radius:8px;font-size:.88rem;margin:10px 0}
+pre.copy{white-space:pre-wrap;word-break:break-all;background:var(--bg);padding:10px;border-radius:10px;font-size:.75rem;max-height:220px;overflow:auto}
+.empty{text-align:center;color:var(--muted);padding:20px}
+.repchip{border:0;background:var(--bg);border-radius:10px;width:38px;height:34px;font-size:1.05rem;flex:none}
+.goal{display:grid;grid-template-columns:52px 34px 44px 1fr;gap:6px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.goal:last-child{border:0}
+.periods{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.periods div{background:var(--bg);border-radius:10px;padding:6px 12px;text-align:center}
+.periods b{display:block;font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.3rem}
+.periods span{font-size:.7rem;color:var(--muted)}
+table.tbl{width:100%;border-collapse:collapse;font-size:.95rem}
+.tbl th{font-size:.72rem;color:var(--muted);text-transform:uppercase;font-weight:600;text-align:right;padding:4px 6px;border-bottom:1px solid var(--line)}
+.tbl th.l,.tbl td.l{text-align:left}
+.tbl td{padding:8px 6px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr.us td{background:var(--ice2);font-weight:700}
+.tbl tr.us td:first-child{border-radius:8px 0 0 8px}.tbl tr.us td:last-child{border-radius:0 8px 8px 0}
+.tbl .pts{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:1.15rem;font-weight:800}
+.tl{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;vertical-align:middle;margin-right:8px}
+.tl img{max-width:26px;max-height:26px;object-fit:contain}
+.tl b{font-family:"Barlow Condensed",Barlow,sans-serif;font-size:.62rem;background:var(--navy);color:#fff;border-radius:6px;width:26px;height:26px;display:grid;place-items:center;letter-spacing:-.02em}
+.av img{max-width:40px;max-height:40px;object-fit:contain}
+.av.hasimg{background:transparent}
+.av b{width:44px;height:44px;border-radius:12px;background:var(--navy);color:var(--ice);display:grid;place-items:center;font-family:"Barlow Condensed",Barlow,sans-serif;font-weight:800}
+.match .ml2{display:block;margin:0 auto 6px;width:60px;height:60px}
+.match .ml2 img{max-width:60px;max-height:60px;object-fit:contain}
+.match .ml2 b{width:60px;height:60px;border-radius:14px;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center;font-size:1.1rem}
+</style>
+</head>
+<body>
+
+<!-- ==================== TIPP-BANNER ==================== -->
+<div id="tippBanner">
+  <div class="wrap">
+    <div class="grow">
+      <strong><img class="clubLogo mini-logo" alt="" style="display:none">Wie geht das Spiel aus?</strong>
+      <small id="tippBannerSub">Tippen ist anonym und freiwillig – jederzeit in den Spieldetails möglich.</small>
+    </div>
+    <button class="chip solid" data-act="tipNow">Jetzt tippen</button>
+    <button class="chip" data-act="tipLater">Später</button>
+    <button class="chip" data-act="tipNever">Nicht tippen</button>
+    <button class="x" data-act="tipLater" aria-label="Schließen">×</button>
+  </div>
+</div>
+
+<!-- ==================== KOPF ==================== -->
+<header>
+  <div class="wrap">
+    <div class="head">
+      <img class="logo clubLogo" alt="Vereinslogo" style="display:none;object-fit:contain">
+      <svg class="logo logoFallback" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 3 58 12v18c0 16-11 26-26 31C17 56 6 46 6 30V12z" fill="#0d2a4d" stroke="#5ec8f2" stroke-width="3"/>
+        <path d="M18 40 24 20l8 9 8-9 6 20-7-5-7 7-7-7z" fill="#5ec8f2"/>
+        <circle cx="27" cy="31" r="2" fill="#ffb703"/><circle cx="37" cy="31" r="2" fill="#ffb703"/>
+      </svg>
+      <div>
+        <div class="club" id="clubName"></div>
+        <h1 id="appName"></h1>
+        <div class="season" id="seasonName"></div>
+      </div>
+      <button class="info" data-act="about" aria-label="Info">ⓘ</button>
+    </div>
+    <div class="tag" id="hashtag"></div>
+    <nav id="nav">
+      <a href="#start" data-v="start">Start</a>
+      <a href="#spielplan" data-v="spielplan">Spielplan</a>
+      <a href="#gegner" data-v="gegner">Gegner</a>
+      <a href="#regeln" data-v="regeln">Regeln</a>
+      <a href="#material" data-v="material">Downloads</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- ========== START ========== -->
+  <section class="view" id="v-start">
+    <div class="card next" id="nextCard"></div>
+
+    <div class="card">
+      <h2>Mannschaft</h2>
+      <div class="tiles" id="teamTiles"></div>
+    </div>
+
+    <div class="card">
+      <h2><img class="clubLogo mini-logo" alt="" style="display:none">Saisonbilanz</h2>
+      <div class="seg" id="bilanzSeg"></div>
+      <div id="bilanz"></div>
+    </div>
+
+    <div class="card">
+      <h2>Tabelle <span class="muted small" id="tblLeague" style="font-family:Barlow,sans-serif;font-weight:500"></span></h2>
+      <div id="tabelle"></div>
+    </div>
+
+    <div class="card">
+      <h2>Topscorer</h2>
+      <div class="seg" id="scorerSeg"><button class="on" data-act="scorerView" data-id="league">Liga</button><button data-act="scorerView" data-id="us">Nur BKM</button></div>
+      <div id="scorer"></div>
+    </div>
+
+    <div class="card">
+      <h2>Bad Boys</h2>
+      <div class="seg" id="badSeg"><button class="on" data-act="badView" data-id="league">Liga</button><button data-act="badView" data-id="us">Nur BKM</button></div>
+      <div id="badboys"></div>
+    </div>
+
+    <div class="card">
+      <h2>News</h2>
+      <div id="newsList"></div>
+    </div>
+  </section>
+
+  <!-- ========== SPIELPLAN ========== -->
+  <section class="view" id="v-spielplan">
+    <div class="filters">
+      <select id="fTeam"></select>
+      <select id="fPlace">
+        <option value="all">Heim &amp; Auswärts</option>
+        <option value="home">Nur Heimspiele</option>
+        <option value="away">Nur Auswärtsspiele</option>
+      </select>
+      <select id="fTime">
+        <option value="all">Ganze Saison</option>
+        <option value="next">Kommende</option>
+        <option value="past">Gespielt</option>
+      </select>
+    </div>
+    <div id="gameList"></div>
+  </section>
+
+  <!-- ========== GEGNER ========== -->
+  <section class="view" id="v-gegner">
+    <div class="card">
+      <h2>Spielorte</h2>
+      <div id="map"><button class="btn p" data-act="loadMap" style="flex:none;padding:12px 20px">🗺️ Karte laden</button></div>
+      <p class="muted small" style="margin:0">Die Karte nutzt OpenStreetMap und wird erst nach Tippen geladen.</p>
+    </div>
+    <div class="card">
+      <h2>Gegner</h2>
+      <div id="oppList"></div>
+    </div>
+  </section>
+
+  <!-- ========== REGELN ========== -->
+  <section class="view" id="v-regeln">
+    <div class="card">
+      <h2>Regeln &amp; Infos</h2>
+      <div id="rulesList"></div>
+    </div>
+  </section>
+
+  <!-- ========== DOWNLOADS ========== -->
+  <section class="view" id="v-material">
+    <div class="card">
+      <h2>Downloads</h2>
+      <button class="dl" data-act="openIcs"><i>📅</i><div><b>Kalenderdatei laden</b><div class="muted small">Spiele in deinen Kalender übernehmen (.ics)</div></div></button>
+      <button class="dl" data-act="openPdf"><i>📄</i><div><b>Spielplan als PDF</b><div class="muted small">Zum Ausdrucken oder Weiterschicken</div></div></button>
+      <div id="extraDownloads"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <button data-act="privacy">Datenschutz</button> · <button data-act="privacy">Datenschutz &amp; Kontakt</button> · <button data-act="admin">Admin</button>
+  <div class="muted small" id="footVer"></div>
+  <div class="muted small">Private, inoffizielle App – kein offizielles Angebot des Vereins.</div>
+</footer>
+
+<!-- ==================== MODALS ==================== -->
+<div class="modal" id="m-game"><div class="sheet" id="gameSheet"></div></div>
+
+<div class="modal" id="m-report"><div class="sheet" id="reportSheet"></div></div>
+
+<div class="modal" id="m-about"><div class="sheet">
+  <div class="sheet-h"><h2>Über die App</h2><button class="x" data-close>×</button></div>
+  <div style="text-align:center;margin:6px 0 10px"><img class="clubLogo" alt="Vereinslogo" style="display:none;width:96px;height:96px;object-fit:contain"></div>
+  <p id="aboutText"></p>
+  <p class="muted small">Version <span class="ver"></span></p>
+</div></div>
+
+<div class="modal" id="m-privacy"><div class="sheet">
+  <div class="sheet-h"><h2>Datenschutz &amp; Kontakt</h2><button class="x" data-close>×</button></div>
+  <div class="switch"><div><b>📊 Nutzungsstatistik</b><div class="muted small">Google Analytics – nur mit deiner Zustimmung</div></div><label class="tog"><input type="checkbox" id="gaToggle"><span></span></label></div>
+  <div class="switch"><div><b>🔔 Push-Benachrichtigungen</b><div class="muted small" id="pushNote">Bei neuen Ergebnissen und Spielverlegungen</div></div><label class="tog"><input type="checkbox" id="pushToggle"><span></span></label></div>
+  <h3 class="cond" style="margin:18px 0 8px;font-size:1.2rem">Feedback</h3>
+  <div class="opts">
+    <button class="opt" data-fb="Fehler"><i>🐞</i>Fehler</button>
+    <button class="opt" data-fb="Wunsch/Anregung"><i>💡</i>Idee</button>
+    <button class="opt" data-fb="Lob"><i>👍</i>Lob</button>
+  </div>
+  <p class="small">Kontakt per E-Mail: <a id="mailLink"></a></p>
+  <div class="legal" id="legalText"></div>
+</div></div>
+
+<div class="modal" id="m-feedback"><div class="sheet">
+  <div class="sheet-h"><h2>Feedback senden</h2><button class="x" data-close>×</button></div>
+  <form id="fbForm">
+    <label class="f">Art der Meldung</label>
+    <div class="opts" id="fbType">
+      <button type="button" class="opt" data-v="Fehler"><i>🐞</i>Fehler</button>
+      <button type="button" class="opt" data-v="Wunsch/Anregung"><i>💡</i>Wunsch</button>
+      <button type="button" class="opt" data-v="Lob"><i>👍</i>Lob</button>
+    </div>
+    <label class="f" for="fbName">Name *</label>
+    <input id="fbName" required maxlength="80">
+    <label class="f" for="fbArea">Bereich</label>
+    <select id="fbArea">
+      <option>Spielplan</option><option>Kalender</option><option>Ergebnisse</option><option>Push</option><option>Gegner</option><option>Downloads/PDF</option><option>App/Darstellung</option><option>Spielbericht</option><option>Neue Funktion</option><option>Sonstiges</option>
+    </select>
+    <label class="f" for="fbText">Beschreibung * <span class="muted small" id="fbCount">0/2000</span></label>
+    <textarea id="fbText" rows="5" maxlength="2000" required></textarea>
+    <label class="f" for="fbMail">E-Mail (optional, für Rückfragen)</label>
+    <input id="fbMail" type="email">
+    <p class="muted small">App-Version <span class="ver"></span></p>
+    <div class="btns"><button type="button" class="btn" data-close>Abbrechen</button><button class="btn p">Meldung senden</button></div>
+  </form>
+</div></div>
+
+<div class="modal" id="m-ics"><div class="sheet">
+  <div class="sheet-h"><h2>Kalenderdatei laden</h2><button class="x" data-close>×</button></div>
+  <label class="f">Mannschaft</label><select id="icsTeam"></select>
+  <label class="f">Spielort</label>
+  <select id="icsPlace"><option value="all">Heim- und Auswärtsspiele</option><option value="home">Nur Heimspiele</option><option value="away">Nur Auswärtsspiele</option></select>
+  <label class="f">Zeitraum</label>
+  <select id="icsTime"><option value="all">Ganze Saison</option><option value="next">Nur kommende Spiele</option></select>
+  <div class="btns"><button class="btn" data-close>Abbrechen</button><button class="btn p" data-act="doIcs">Kalenderdatei laden</button></div>
+</div></div>
+
+<div class="modal" id="m-pdf"><div class="sheet">
+  <div class="sheet-h"><h2>PDF erstellen</h2><button class="x" data-close>×</button></div>
+  <label class="f">Umfang</label>
+  <select id="pdfTime"><option value="all">Alle Spiele</option><option value="next">Nur kommende Spiele</option><option value="past">Nur Ergebnisse</option></select>
+  <label class="f">Mannschaft</label><select id="pdfTeam"></select>
+  <label class="f">Spielort</label>
+  <select id="pdfPlace"><option value="all">Heim- und Auswärtsspiele</option><option value="home">Nur Heimspiele</option><option value="away">Nur Auswärtsspiele</option></select>
+  <p class="muted small" id="pdfHint"></p>
+  <div class="btns"><button class="btn" data-close>Abbrechen</button><button class="btn p" data-act="doPdf">PDF erstellen</button></div>
+</div></div>
+
+<div class="modal" id="m-copy"><div class="sheet">
+  <div class="sheet-h"><h2 id="copyTitle">Text kopieren</h2><button class="x" data-close>×</button></div>
+  <p class="small" id="copyHint"></p>
+  <pre class="copy" id="copyText"></pre>
+  <div class="btns"><button class="btn" data-close>Schließen</button><button class="btn p" data-act="doCopy">Kopieren</button></div>
+</div></div>
+
+<div class="modal" id="m-admin"><div class="sheet">
+  <div class="sheet-h"><h2>Admin-Bereich</h2><button class="x" data-close>×</button></div>
+  <div id="adminBody"></div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   KONFIGURATION – hier alles anpassen (Verein, Teams, Spiele, Texte)
+   ===================================================================== */
+const CONFIG = {
+  version: "1.0.0",
+  club: "ESV Grizzlys Bergkamen",
+  appName: "Grizzlys U13",
+  ourName: "Grizzlys U13",      // so erscheint die eigene Mannschaft bei den Spielen
+  season: "Saison 2026/27",
+  hashtag: "#GoGrizzlys",
+  contactEmail: "kontakt@example.de",   // eigene Kontaktadresse eintragen
+  responsible: "Max Mustermann, Musterstraße 1, 12345 Musterstadt",
+  about: "App für Spieler, Eltern und Fans der U13 des ESV Grizzlys Bergkamen in der Landesliga NRW. Spielplan, Ergebnisse, Gegner, Regeln und Downloads – privat, nicht kommerziell und ohne Werbung.",
+  adminPinSha256: "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", // = "1234" – unbedingt ändern!
+  gaMeasurementId: "",      // z. B. "G-XXXXXXX" – leer = keine Statistik
+  firebase: null,           // { apiKey:"…", projectId:"…", messagingSenderId:"…", appId:"…", vapidKey:"…" } – für Push & zentrale Tipps
+  logo: "logo.png",         // Vereinslogo (PNG/SVG) ins Repository legen – erscheint in Kopf, Spielen, PDF, Favicon
+  /* Funktionen ein-/ausblenden: true = sichtbar */
+  features: { gameDetails: false, tipp: false },
+  gameDurationMin: 120,
+  /* Live-Spielplan und offizielle Tabelle vom Verband: werden per GitHub Action alle 2 Std. in data/spielplan.json geschrieben.
+     team = welche Mannschaft der App, ourTeamMatch = Teil des eigenen Vereinsnamens wie beim EHV geschrieben. */
+  /* Ganze Liga (für die Tabelle): [Datum, Heim, Gast, Tore Heim, Tore Gast, 1 = n.V./SO].
+     Wird automatisch durch data/spielplan.json ersetzt, sobald der Abruf läuft. */
+  ourCode: "BKM",
+  leagueName: "U13 Landesliga NRW",
+  points: { win: 3, otWin: 2, otLoss: 1, loss: 0 },
+  /* Logos: Datei logos/<KÜRZEL>.png ins Repository legen (z. B. logos/NEV.png). Fehlt sie, erscheint das Kürzel. */
+  teamLogos: { BKM: "logo.png" },
+  /* Spielberichte von Hand zuordnen ("JJJJ-MM-TT" des Spiels → Link). Normalerweise holt der automatische Abruf die Links selbst. */
+  reports: {
+    "2026-11-08": "https://ehv-nrw.de/leagues/game_report/4261e754-33e8-410c-b0ff-4b68682a7528/21668/",  // BKM – TRO2 12:3
+    "2026-11-21": "https://ehv-nrw.de/leagues/game_report/646baa2c-0a63-48b6-9793-46e8dd66fc92/21668/"   // EVD2 – BKM 1:10
+  },
+  /* Volle Vereinsnamen optional, z. B. NEV: "Neusser EV" */
+  teamNames: {},
+  league: [
+    ["2026-09-05T11:45", "TRO2", "NEV", 12, 6, 0],
+    ["2026-09-12T10:15", "NEU", "EVD2", 12, 6, 0],
+    ["2026-09-18T19:30", "EVD2", "RIA", 7, 15, 0],
+    ["2026-09-20T12:30", "DIN", "TRO2", 8, 16, 0],
+    ["2026-09-25T20:00", "NEV", "RIA", 10, 5, 0],
+    ["2026-09-27T09:00", "BKM", "RIA", 6, 5, 0],
+    ["2026-09-27T18:00", "TRO2", "ECBL", 9, 8, 0],
+    ["2026-10-03T09:00", "LHH", "ECBL", 11, 1, 0],
+    ["2026-10-03T10:00", "TRO2", "NEU", 9, 8, 1],
+    ["2026-10-03T18:00", "NEV", "ESS", 10, 3, 0],
+    ["2026-10-04T09:00", "BKM", "NEU", 6, 5, 0],
+    ["2026-10-04T12:30", "DIN", "EAD", 0, 31, 0],
+    ["2026-10-09T17:15", "ECBL", "BKM", 7, 6, 0],
+    ["2026-10-11T12:30", "DIN", "NEU", 6, 16, 0],
+    ["2026-10-11T13:30", "EAD", "TRO2", 18, 1, 0],
+    ["2026-10-11T17:00", "RIA", "EVD2", 14, 3, 0],
+    ["2026-10-16T17:30", "ECBL", "EAD", 0, 14, 0],
+    ["2026-10-16T19:30", "EVD2", "DIN", 8, 11, 0],
+    ["2026-10-17T12:30", "ESS", "EVD2", 5, 13, 0],
+    ["2026-10-18T09:00", "BKM", "NEV", 5, 4, 0],
+    ["2026-10-18T13:30", "EAD", "NEU", 17, 1, 0],
+    ["2026-10-24T10:00", "TRO2", "BKM", 4, 1, 0],
+    ["2026-10-24T18:00", "NEV", "DIN", 18, 4, 0],
+    ["2026-10-30T17:15", "ECBL", "DIN", 18, 1, 0],
+    ["2026-10-31T10:00", "EVD2", "NEV", 5, 13, 0],
+    ["2026-10-31T10:15", "NEU", "BKM", 7, 9, 0],
+    ["2026-11-01T17:00", "RIA", "ECBL", 15, 4, 0],
+    ["2026-11-07T10:30", "LHH", "NEV", 6, 7, 0],
+    ["2026-11-07T12:30", "ESS", "NEU", 3, 26, 0],
+    ["2026-11-08T09:00", "BKM", "TRO2", 12, 3, 0],
+    ["2026-11-08T10:15", "ESS", "NEV", 3, 26, 0],
+    ["2026-11-08T13:30", "EAD", "DIN", 27, 5, 0],
+    ["2026-11-08T17:00", "RIA", "LHH", 4, 9, 0],
+    ["2026-11-13T17:15", "ECBL", "EVD2", 8, 4, 0],
+    ["2026-11-14T11:00", "RIA", "EAD", 3, 11, 0],
+    ["2026-11-14T18:00", "NEV", "TRO2", 11, 3, 0],
+    ["2026-11-21T10:00", "EVD2", "BKM", 1, 10, 0],
+    ["2026-11-21T10:15", "NEU", "EAD", 4, 10, 0],
+    ["2026-11-22T10:15", "ESS", "RIA", 2, 15, 0],
+    ["2026-11-22T18:00", "TRO2", "DIN"],
+    ["2026-11-26T18:00", "BKM", "LHH"],
+    ["2026-11-27T17:15", "ECBL", "RIA"],
+    ["2026-11-28T10:15", "NEU", "ESS"],
+    ["2026-11-28T18:00", "NEV", "LHH"],
+    ["2026-11-29T12:30", "DIN", "LHH"],
+    ["2026-12-03T18:30", "EVD2", "ESS"],
+    ["2026-12-04T17:15", "ECBL", "ESS"],
+    ["2026-12-05T12:30", "ESS", "TRO2"],
+    ["2026-12-05T18:00", "NEV", "EVD2"],
+    ["2026-12-06T08:00", "LHH", "RIA"],
+    ["2026-12-06T10:15", "ESS", "DIN"],
+    ["2026-12-06T13:30", "EAD", "BKM"],
+    ["2026-12-11T17:15", "ECBL", "NEV"],
+    ["2026-12-12T10:15", "NEU", "LHH"],
+    ["2026-12-13T09:00", "BKM", "EAD"],
+    ["2026-12-18T17:15", "ECBL", "TRO2"],
+    ["2026-12-20T12:30", "DIN", "BKM"],
+    ["2027-01-02T10:00", "TRO2", "EVD2"],
+    ["2027-01-03T13:30", "EAD", "EVD2"],
+    ["2027-01-06T18:15", "EAD", "ESS"],
+    ["2027-01-09T10:15", "NEU", "TRO2"],
+    ["2027-01-09T10:30", "LHH", "ESS"],
+    ["2027-01-09T12:30", "DIN", "NEV"],
+    ["2027-01-10T08:00", "EAD", "RIA"],
+    ["2027-01-10T09:00", "BKM", "ECBL"],
+    ["2027-01-15T19:30", "EVD2", "TRO2"],
+    ["2027-01-16T10:00", "EVD2", "LHH"],
+    ["2027-01-16T10:15", "NEU", "NEV"],
+    ["2027-01-17T08:00", "LHH", "NEU"],
+    ["2027-01-17T09:00", "BKM", "EVD2"],
+    ["2027-01-17T17:00", "RIA", "ESS"],
+    ["2027-01-22T19:00", "ECBL", "LHH"],
+    ["2027-01-22T20:15", "TRO2", "RIA"],
+    ["2027-01-23T10:15", "NEU", "DIN"],
+    ["2027-01-23T12:30", "ESS", "EAD"],
+    ["2027-01-24T10:15", "ESS", "BKM"],
+    ["2027-01-29T20:00", "ECBL", "NEU"],
+    ["2027-01-30T10:30", "LHH", "DIN"],
+    ["2027-01-30T18:00", "NEV", "NEU"],
+    ["2027-01-31T12:30", "DIN", "ESS"],
+    ["2027-01-31T17:00", "RIA", "NEV"],
+    ["2027-01-31T18:00", "TRO2", "ESS"],
+    ["2027-02-06T10:30", "LHH", "TRO2"],
+    ["2027-02-07T09:00", "BKM", "ESS"],
+    ["2027-02-13T10:15", "NEU", "ECBL"],
+    ["2027-02-13T18:00", "NEV", "BKM"],
+    ["2027-02-14T08:00", "LHH", "EVD2"],
+    ["2027-02-14T12:30", "DIN", "RIA"],
+    ["2027-02-14T13:30", "EAD", "NEV"],
+    ["2027-02-20T10:00", "TRO2", "LHH"],
+    ["2027-02-20T10:00", "EVD2", "NEU"],
+    ["2027-02-20T11:00", "RIA", "BKM"],
+    ["2027-02-20T18:00", "NEV", "ECBL"],
+    ["2027-02-21T08:00", "LHH", "EAD"],
+    ["2027-02-21T09:00", "BKM", "DIN"],
+    ["2027-02-26T19:30", "EVD2", "EAD"],
+    ["2027-02-27T10:15", "NEU", "RIA"],
+    ["2027-02-27T10:30", "LHH", "BKM"],
+    ["2027-02-27T18:00", "NEV", "EAD"],
+    ["2027-02-28T10:15", "ESS", "LHH"],
+    ["2027-02-28T12:30", "DIN", "ECBL"],
+    ["2027-03-06T11:00", "RIA", "DIN"],
+    ["2027-03-07T12:30", "DIN", "EVD2"],
+    ["2027-03-07T13:30", "EAD", "ECBL"],
+    ["2027-03-12T19:30", "EVD2", "ECBL"],
+    ["2027-03-13T11:00", "RIA", "TRO2"],
+    ["2027-03-14T08:00", "EAD", "LHH"],
+    ["2027-03-14T10:15", "ESS", "ECBL"],
+    ["2027-03-20T10:00", "TRO2", "EAD"],
+    ["2027-03-20T11:00", "RIA", "NEU"]
+  ],
+  liveSchedules: [
+    { team: "u13", file: "data/spielplan.json", ourTeamMatch: ["Bergkamen", "BKM"], source: "https://ehv-nrw.de/leagues/league/u13/lln/70/" }
+  ],
+  home: { name: "Eissporthalle Bergkamen-Weddinghofen", address: "Häupenweg 29, 59192 Bergkamen", lat: 51.634, lng: 7.616 },
+  teams: [
+    { id: "u13",  name: "U13",   info: "Landesliga NRW" }
+  ],
+  /* Kürzel wie beim EHV – name/rink/address gern mit vollen Namen und Hallen ergänzen */
+  opponents: [
+    { id:"din", name:"DIN", short:"DIN", city:"Dinslaken", rink:"Eissporthalle Dinslaken", address:"Am Stadtbad 1, 46537 Dinslaken", lat:51.566, lng:6.737 },
+    { id:"ead", name:"EAD", short:"EAD", city:"Dortmund", rink:"Eissportzentrum Westfalenhallen", address:"Strobelallee 33, 44139 Dortmund", lat:51.4945, lng:7.4545 },
+    { id:"ecbl", name:"ECBL", short:"ECBL", city:"Solingen", rink:"Eissporthalle Solingen", address:"Brühler Str. 20, 42657 Solingen", lat:51.181, lng:7.062 },
+    { id:"ess", name:"ESS", short:"ESS", city:"Essen", rink:"Eissporthalle Essen-West", address:"Curtiusstraße 2, 45144 Essen", lat:51.4515, lng:6.9745 },
+    { id:"evd2", name:"EVD2", short:"EVD2", city:"Duisburg", rink:"Eissporthalle Duisburg", address:"Margaretenstraße 17-19, 47055 Duisburg", lat:51.408, lng:6.781 },
+    { id:"lhh", name:"LHH", short:"LHH", city:"Hamm", rink:"Maximilian Eissporthalle", address:"Karl-Koßmann-Straße 1, 59071 Hamm", lat:51.681, lng:7.866 },
+    { id:"neu", name:"NEU", short:"NEU", city:"Neuwied", rink:"Eissporthalle Neuwied", address:"Andernacher Str. 111, 56564 Neuwied", lat:50.437, lng:7.452 },
+    { id:"nev", name:"NEV", short:"NEV", city:"Neuss", rink:"Eissporthalle Neuss", address:"Jakob-Koch-Straße 1, 41466 Neuss", lat:51.174, lng:6.676 },
+    { id:"ria", name:"RIA", short:"RIA", city:"Ratingen", rink:"Eissporthalle Ratingen", address:"Am Sandbach 12, 40878 Ratingen", lat:51.300, lng:6.848 },
+    { id:"tro2", name:"TRO2", short:"TRO2", city:"Troisdorf", rink:"Eissporthalle Troisdorf", address:"Uckendorfer Str. 135, 53844 Troisdorf", lat:50.826, lng:7.141 }
+  ],
+  /* result: {us, them, ot:true wenn n. V./Penalty} oder null */
+  games: [
+    { id:"u13lln-006", team:"u13", date:"2026-09-27T09:00", home:true, opp:"ria", result:{us:6,them:5} },
+    { id:"u13lln-011", team:"u13", date:"2026-10-04T09:00", home:true, opp:"neu", result:{us:6,them:5} },
+    { id:"u13lln-013", team:"u13", date:"2026-10-09T17:15", home:false, opp:"ecbl", result:{us:6,them:7} },
+    { id:"u13lln-020", team:"u13", date:"2026-10-18T09:00", home:true, opp:"nev", result:{us:5,them:4} },
+    { id:"u13lln-022", team:"u13", date:"2026-10-24T10:00", home:false, opp:"tro2", result:{us:1,them:4} },
+    { id:"u13lln-026", team:"u13", date:"2026-10-31T10:15", home:false, opp:"neu", result:{us:9,them:7} },
+    { id:"u13lln-030", team:"u13", date:"2026-11-08T09:00", home:true, opp:"tro2", result:{us:12,them:3} },
+    { id:"u13lln-037", team:"u13", date:"2026-11-21T10:00", home:false, opp:"evd2", result:{us:10,them:1} },
+    { id:"u13lln-041", team:"u13", date:"2026-11-26T18:00", home:true, opp:"lhh", result:null },
+    { id:"u13lln-052", team:"u13", date:"2026-12-06T13:30", home:false, opp:"ead", result:null },
+    { id:"u13lln-055", team:"u13", date:"2026-12-13T09:00", home:true, opp:"ead", result:null },
+    { id:"u13lln-057", team:"u13", date:"2026-12-20T12:30", home:false, opp:"din", result:null },
+    { id:"u13lln-065", team:"u13", date:"2027-01-10T09:00", home:true, opp:"ecbl", result:null },
+    { id:"u13lln-070", team:"u13", date:"2027-01-17T09:00", home:true, opp:"evd2", result:null },
+    { id:"u13lln-076", team:"u13", date:"2027-01-24T10:15", home:false, opp:"ess", result:null },
+    { id:"u13lln-084", team:"u13", date:"2027-02-07T09:00", home:true, opp:"ess", result:null },
+    { id:"u13lln-086", team:"u13", date:"2027-02-13T18:00", home:false, opp:"nev", result:null },
+    { id:"u13lln-092", team:"u13", date:"2027-02-20T11:00", home:false, opp:"ria", result:null },
+    { id:"u13lln-095", team:"u13", date:"2027-02-21T09:00", home:true, opp:"din", result:null },
+    { id:"u13lln-098", team:"u13", date:"2027-02-27T10:30", home:false, opp:"lhh", result:null }
+  ],
+  news: [
+    { date:"2026-11-21", title:"Deutlicher Auswärtssieg", text:"10:1 bei EVD2 – der dritte Sieg in Folge." }
+  ],
+  rules: [
+    { title:"Spielzeit & Wertung", text:"U13: Spielzeit laut Durchführungsbestimmungen des EHV NRW. Bei Unentschieden in der Hauptrunde Verlängerung und ggf. Penaltyschießen (Beispiel – bitte an eure Liga anpassen)." },
+    { title:"Ausrüstung", text:"Vollvisier und Halsschutz sind Pflicht. Ausrüstung bitte vor jedem Spiel prüfen." },
+    { title:"Anreise & Treffpunkt", text:"Treffpunkt ist 60 Minuten vor Spielbeginn an der Halle bzw. am Vereinsheim bei Auswärtsfahrten." },
+    { title:"Fair Play für Eltern", text:"Anfeuern ja, Schiedsrichter- oder Gegnerkritik nein. Coaching übernehmen die Trainer." },
+    { title:"Absagen", text:"Bitte bis spätestens 48 Stunden vor dem Spiel beim Trainer abmelden." }
+  ],
+  downloads: [
+    { icon:"📋", title:"Anmeldeformular (Beispiel-Link)", desc:"Mitgliedsantrag des Vereins", url:"https://example.com/" }
+  ]
+};
+
+/* =====================================================================
+   Ab hier: App-Logik
+   ===================================================================== */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem("va_"+k); return v==null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem("va_"+k, JSON.stringify(v)); }catch(e){} }
+};
+const sessionHidden = new Set();
+const WD = ["So","Mo","Di","Mi","Do","Fr","Sa"];
+const MON = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+
+/* ---------- Daten (Konfiguration + Änderungen aus dem Admin-Bereich) ---------- */
+let DATA;
+function loadData(){
+  const ov = store.get("overlay", { games:{}, news:null, removed:[] });
+  DATA = JSON.parse(JSON.stringify(CONFIG));
+  DATA.games = DATA.games.map(g => ({ ...g, ...(ov.games[g.id] || {}) }));
+  if (ov.news) DATA.news = ov.news;
+  DATA.games.sort((a,b) => a.date.localeCompare(b.date));
+}
+/* ---------- Live-Spielplan (EHV NRW) laden ---------- */
+const LIVE = { loaded: [], updated: null, standings: null, scorers: null, scorersRestricted: false, badboys: null, badboysRestricted: false };
+const slug = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+async function loadLive(){
+  for(const src of (CONFIG.liveSchedules || [])){
+    try{
+      const r = await fetch(src.file + "?t=" + Math.floor(Date.now()/600000), { cache:"no-store" });
+      if(!r.ok) continue;
+      const j = await r.json(); if(!Array.isArray(j.games) || !j.games.length) continue;
+      const ms = [].concat(src.ourTeamMatch).map(x => x.toLowerCase());
+      const isUs = n => ms.some(m => n.toLowerCase() === m || (m.length > 4 && n.toLowerCase().includes(m)));
+      const games = [];
+      j.games.forEach(x => {
+        const homeUs = isUs(x.home), awayUs = isUs(x.away);
+        if(!homeUs && !awayUs) return;                      // nur Spiele unserer Mannschaft
+        const oName = homeUs ? x.away : x.home, oid = "ehv-" + slug(oName);
+        if(!CONFIG.opponents.some(o => o.id === oid || o.name === oName))
+          CONFIG.opponents.push({ id:oid, name:oName, short:oName.split(/\s+/).filter(w => /^[A-ZÄÖÜ]/.test(w)).slice(-2).map(w => w[0]).join("") || oName.slice(0,2).toUpperCase(), city:"", rink:x.venue || "", address:x.venue || "" });
+        const opObj = CONFIG.opponents.find(o => o.id === oid || o.name === oName);
+        games.push({ id:"ehv-" + src.team + "-" + (x.id || slug(x.date + x.home)), team:src.team, date:x.date, home:homeUs, opp:opObj.id,
+          venueName: x.venue || "", reportUrl: x.reportUrl || "", report: x.report || null, result: x.result ? (homeUs ? { us:x.result.home, them:x.result.away, ot:!!x.result.ot } : { us:x.result.away, them:x.result.home, ot:!!x.result.ot }) : null });
+      });
+      if(!games.length) continue;
+      CONFIG.games = CONFIG.games.filter(g => g.team !== src.team).concat(games);  // Beispieldaten dieser Mannschaft ersetzen
+      LIVE.loaded.push(src.team); LIVE.updated = j.updated;
+      if(Array.isArray(j.standings) && j.standings.length >= 3) LIVE.standings = j.standings;
+      if(Array.isArray(j.scorers)) LIVE.scorers = j.scorers;
+      LIVE.scorersRestricted = !!j.scorersRestricted;
+      if(Array.isArray(j.badboys)) LIVE.badboys = j.badboys;
+      LIVE.badboysRestricted = !!j.badboysRestricted;
+      CONFIG.league = j.games.map(x => [x.date, x.home, x.away].concat(x.result ? [x.result.home, x.result.away, x.result.ot ? 1 : 0] : []));
+    }catch(e){ /* keine Live-Daten → Daten aus CONFIG bleiben */ }
+  }
+  if(LIVE.loaded.length){ loadData(); renderAll(); }
+}
+
+function overlay(){ return store.get("overlay", { games:{}, news:null }); }
+function saveOverlay(o){ store.set("overlay", o); loadData(); renderAll(); }
+
+const team = id => DATA.teams.find(t => t.id === id) || { name:id };
+const opp = id => DATA.opponents.find(o => o.id === id) || { name:id, short:"?" };
+const d = g => new Date(g.date);
+const isPast = g => !!g.result || d(g) < new Date(Date.now() - CONFIG.gameDurationMin*60000);
+const venue = g => g.venueName && !g.home ? { name:g.venueName, address:g.venueName } : g.home ? DATA.home : { name: opp(g.opp).rink, address: opp(g.opp).address, lat: opp(g.opp).lat, lng: opp(g.opp).lng };
+const ourName = g => DATA.ourName || `${DATA.appName} ${team(g.team).name}`;
+const homeName = g => g.home ? ourName(g) : tName(opp(g.opp).name);
+const awayName = g => g.home ? tName(opp(g.opp).name) : ourName(g);
+const fmtDate = g => { const x = d(g); return `${WD[x.getDay()]}, ${x.getDate()}. ${MON[x.getMonth()]} ${x.getFullYear()}`; };
+const fmtTime = g => d(g).toLocaleTimeString("de-DE", { hour:"2-digit", minute:"2-digit" }) + " Uhr";
+function outcome(g){ const r = g.result; if(!r) return null; if(r.us > r.them) return r.ot ? "W" : "W"; if(r.us < r.them) return r.ot ? "O" : "L"; return "O"; }
+const scoreText = g => g.home ? `${g.result.us}:${g.result.them}` : `${g.result.them}:${g.result.us}`;
+
+let selTeam = CONFIG.teams.length === 1 ? CONFIG.teams[0].id : store.get("team", "all");
+if(selTeam !== "all" && !CONFIG.teams.some(t => t.id === selTeam)) selTeam = "all";
+
+function filterGames({ team:t="all", place="all", time="all" } = {}){
+  return DATA.games.filter(g =>
+    (t === "all" || g.team === t) &&
+    (place === "all" || (place === "home") === g.home) &&
+    (time === "all" || (time === "next" ? !isPast(g) : isPast(g))));
+}
+function nextGame(){ return filterGames({ team:selTeam, time:"next" })[0]; }
+
+/* ---------- Vereinslogo ---------- */
+let LOGO = null;          // URL, wenn die Datei existiert
+let LOGO_DATA = null;     // dataURL für das PDF
+function initLogo(){
+  if(!CONFIG.logo) return;
+  const img = new Image();
+  img.onload = () => {
+    LOGO = CONFIG.logo;
+    $$(".clubLogo").forEach(e => { e.src = LOGO; e.style.display = ""; });
+    $$(".logoFallback").forEach(e => e.style.display = "none");
+    try{ const c = document.createElement("canvas"); c.width = img.naturalWidth || 256; c.height = img.naturalHeight || 256;
+         c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); LOGO_DATA = { url:c.toDataURL("image/png"), w:c.width, h:c.height }; }catch(e){}
+    renderAll();
+  };
+  img.src = CONFIG.logo;
+}
+const usLogo = cls => LOGO ? `<img class="${cls}" src="${esc(LOGO)}" alt="">` : "";
+
+/* ---------- Tabelle & Team-Logos ---------- */
+const tName = c => (DATA.teamNames || {})[c] || c;
+function teamLogo(code, cls = "tl"){
+  const src = (DATA.teamLogos || {})[code] || `logos/${code}.png`;
+  return `<span class="${cls}"><img src="${esc(src)}" alt="" onerror="this.outerHTML='<b>${esc(code).slice(0,4)}</b>'"></span>`;
+}
+function standings(){
+  const P = DATA.points, T = {};
+  const t = c => T[c] ||= { code:c, gp:0, w:0, otw:0, otl:0, l:0, gf:0, ga:0, pts:0 };
+  const played = (DATA.league || []).filter(r => r.length >= 5);
+  (DATA.league || []).forEach(r => { t(r[1]); t(r[2]); });
+  played.forEach(([, h, a, hs, as, ot]) => {
+    [[h, hs, as], [a, as, hs]].forEach(([c, f, g]) => {
+      const s = t(c); s.gp++; s.gf += f; s.ga += g;
+      if(f > g){ ot ? s.otw++ : s.w++; s.pts += ot ? P.otWin : P.win; }
+      else if(f < g){ ot ? s.otl++ : s.l++; s.pts += ot ? P.otLoss : P.loss; }
+    });
+  });
+  // Direkter Vergleich bei Punktgleichheit, danach Tordifferenz, dann mehr Tore
+  const h2h = (codes) => { const m = {}; codes.forEach(c => m[c] = { p:0, d:0 });
+    played.forEach(([, h, a, hs, as, ot]) => { if(!m[h] || !m[a]) return;
+      m[h].d += hs - as; m[a].d += as - hs;
+      if(hs > as){ m[h].p += ot ? P.otWin : P.win; m[a].p += ot ? P.otLoss : P.loss; }
+      else if(as > hs){ m[a].p += ot ? P.otWin : P.win; m[h].p += ot ? P.otLoss : P.loss; } });
+    return m; };
+  const list = Object.values(T);
+  const groups = {}; list.forEach(s => (groups[s.pts] ||= []).push(s.code));
+  const H = {}; Object.values(groups).forEach(g => { if(g.length > 1) Object.assign(H, h2h(g)); });
+  return list.sort((x, y) => y.pts - x.pts || ((H[y.code]?.p ?? 0) - (H[x.code]?.p ?? 0)) || ((H[y.code]?.d ?? 0) - (H[x.code]?.d ?? 0))
+    || (y.gf - y.ga) - (x.gf - x.ga) || y.gf - x.gf || x.code.localeCompare(y.code));
+}
+let scorerView = "league";
+function renderScorer(){
+  const el = $("#scorer");
+  $$("#scorerSeg button").forEach(b => b.classList.toggle("on", b.dataset.id === scorerView));
+  if(LIVE.scorersRestricted){ $("#scorerSeg").style.display = "none"; el.innerHTML = `<div class="empty">Der EHV NRW veröffentlicht für diese Liga keine Scorerliste.</div>`; return; }
+  if(!LIVE.scorers || !LIVE.scorers.length){ $("#scorerSeg").style.display = "none"; el.innerHTML = `<div class="empty">Noch keine Daten – die Scorerliste erscheint nach dem ersten automatischen Abruf vom EHV NRW.</div>`; return; }
+  $("#scorerSeg").style.display = "";
+  const isUs = t => t === DATA.ourCode || /bergkamen/i.test(t);
+  const list = (scorerView === "us" ? LIVE.scorers.filter(x => isUs(x.team)) : LIVE.scorers).slice(0, 10);
+  if(!list.length){ el.innerHTML = `<div class="empty">Noch keine Scorer von ${esc(DATA.ourCode)}.</div>`; return; }
+  el.innerHTML = `<table class="tbl"><thead><tr><th>#</th><th class="l">Spieler</th><th>T</th><th>A</th><th>Pkt</th></tr></thead><tbody>` +
+    list.map(x => `<tr class="${isUs(x.team) && scorerView === "league" ? "us" : ""}"><td>${x.rank}</td>
+      <td class="l" style="white-space:normal">${teamLogo(x.team)}${esc(x.name)}</td><td>${x.g ?? "–"}</td><td>${x.a ?? "–"}</td><td class="pts">${x.pts}</td></tr>`).join("") +
+    `</tbody></table><p class="muted small" style="margin:8px 0 0">Quelle: EHV NRW${LIVE.updated ? ` · Stand ${new Date(LIVE.updated).toLocaleString("de-DE",{dateStyle:"short",timeStyle:"short"})} Uhr` : ""}</p>`;
+}
+let badView = "league";
+function renderBadboys(){
+  const el = $("#badboys");
+  $$("#badSeg button").forEach(b => b.classList.toggle("on", b.dataset.id === badView));
+  if(LIVE.badboysRestricted){ $("#badSeg").style.display = "none"; el.innerHTML = `<div class="empty">Der EHV NRW veröffentlicht für diese Liga keine Strafstatistik.</div>`; return; }
+  if(!LIVE.badboys || !LIVE.badboys.length){ $("#badSeg").style.display = "none"; el.innerHTML = `<div class="empty">Noch keine Daten – die Liste erscheint nach dem ersten automatischen Abruf vom EHV NRW.</div>`; return; }
+  $("#badSeg").style.display = "";
+  const isUs = t => t === DATA.ourCode || /bergkamen/i.test(t);
+  const list = (badView === "us" ? LIVE.badboys.filter(x => isUs(x.team)) : LIVE.badboys).slice(0, 10);
+  if(!list.length){ el.innerHTML = `<div class="empty">Keine Strafminuten für ${esc(DATA.ourCode)} – sauber! 😇</div>`; return; }
+  el.innerHTML = `<table class="tbl"><thead><tr><th>#</th><th class="l">Spieler</th><th>Sp</th><th>Strafmin.</th></tr></thead><tbody>` +
+    list.map(x => `<tr class="${isUs(x.team) && badView === "league" ? "us" : ""}"><td>${x.rank}</td>
+      <td class="l" style="white-space:normal">${teamLogo(x.team)}${esc(x.name)}</td><td>${x.gp ?? "–"}</td><td class="pts">${x.pim}</td></tr>`).join("") +
+    `</tbody></table><p class="muted small" style="margin:8px 0 0">Quelle: EHV NRW${LIVE.updated ? ` · Stand ${new Date(LIVE.updated).toLocaleString("de-DE",{dateStyle:"short",timeStyle:"short"})} Uhr` : ""}</p>`;
+}
+function renderTable(){
+  let rows = standings(), official = false;
+  if(LIVE.standings){
+    // Offizielle EHV-Tabelle: Platz, Spiele, Diff und Punkte vom Verband, Siege/Niederlagen aus den Ergebnissen
+    const calc = Object.fromEntries(rows.map(r => [r.code, r]));
+    rows = [...LIVE.standings].sort((a, b) => a.rank - b.rank).map(o => { const c = calc[o.team] || { w:0, otw:0, l:0, otl:0 };
+      return { code:o.team, gp:o.gp, w:c.w, otw:c.otw, l:c.l, otl:c.otl, gf:o.diff, ga:0, pts:o.pts }; });
+    official = true;
+  }
+  $("#tblLeague").textContent = DATA.leagueName ? "· " + DATA.leagueName : "";
+  if(!rows.length){ $("#tabelle").innerHTML = `<div class="empty">Noch keine Tabelle.</div>`; return; }
+  $("#tabelle").innerHTML = `<table class="tbl"><thead><tr><th>#</th><th class="l">Team</th><th>Sp</th><th>S</th><th>N</th><th>Diff</th><th>Pkt</th></tr></thead><tbody>` +
+    rows.map((s, i) => { const d = s.gf - s.ga;
+      return `<tr class="${s.code === DATA.ourCode || /bergkamen/i.test(s.code) ? "us" : ""}"><td>${i + 1}</td><td class="l">${teamLogo(s.code)}${esc(tName(s.code))}</td><td>${s.gp}</td>
+        <td>${s.w + s.otw}</td><td>${s.l + s.otl}</td><td>${d > 0 ? "+" : ""}${d}</td><td class="pts">${s.pts}</td></tr>`; }).join("") +
+    `</tbody></table><p class="muted small" style="margin:8px 0 0">${official ? "Offizielle Tabelle vom EHV NRW" : "Wird automatisch aus den Ergebnissen berechnet"}${LIVE.updated ? ` · Stand ${new Date(LIVE.updated).toLocaleString("de-DE",{dateStyle:"short",timeStyle:"short"})} Uhr` : ""}. Punkte: Sieg 3, Sieg n.V./SO 2, Niederlage n.V./SO 1.</p>`;
+}
+
+/* ---------- Rendering ---------- */
+function renderHeader(){
+  $("#clubName").textContent = DATA.club;
+  $("#appName").textContent = DATA.appName;
+  $("#seasonName").textContent = DATA.season;
+  $("#hashtag").textContent = DATA.hashtag;
+  $("#aboutText").textContent = DATA.about;
+  $$(".ver").forEach(e => e.textContent = CONFIG.version);
+  $("#footVer").textContent = `${DATA.club} · ${DATA.season} · v${CONFIG.version}`;
+  const ml = $("#mailLink"); ml.textContent = CONFIG.contactEmail; ml.href = "mailto:" + CONFIG.contactEmail;
+}
+
+let cdTimer;
+function renderNext(){
+  const g = nextGame(), el = $("#nextCard");
+  clearInterval(cdTimer);
+  if(!g){ el.innerHTML = `<div class="lbl">Nächstes Spiel</div><p>Aktuell sind keine weiteren Spiele geplant.</p>`; return; }
+  const v = venue(g);
+  el.innerHTML = `
+    <div class="lbl">Nächstes Spiel · ${esc(team(g.team).name)} · ${g.home ? "Heimspiel" : "Auswärts"}</div>
+    <div class="match"><div class="t">${g.home ? usLogo("ml") : teamLogo(opp(g.opp).name, "ml2")}${esc(homeName(g))}</div><div class="vs">vs</div><div class="t">${!g.home ? usLogo("ml") : teamLogo(opp(g.opp).name, "ml2")}${esc(awayName(g))}</div></div>
+    <div style="text-align:center;margin-bottom:6px"><b>${fmtDate(g)} · ${fmtTime(g)}</b><br><span style="color:var(--ice2)">${[v.name, v.address].filter(Boolean).map(esc).join(", ") || "Auswärts bei " + esc(opp(g.opp).name)}</span></div>
+    <div class="countdown" id="cd"></div>
+    <div class="actions">
+      ${routeBtn(g)}
+      <button class="act" data-act="termin" data-id="${g.id}"><i>📅</i>Termin</button>
+      <button class="act" data-act="remind" data-id="${g.id}"><i>⏰</i>Erinnerung</button>
+      <button class="act" data-act="share" data-id="${g.id}"><i>📤</i>Teilen</button>
+    </div>
+    ${CONFIG.features.gameDetails ? `<button class="btn" style="width:100%;margin-top:10px;background:rgba(255,255,255,.12);color:#fff" data-act="game" data-id="${g.id}">Spieldetails${CONFIG.features.tipp ? " &amp; Tipp" : ""}</button>` : ""}`;
+  const tick = () => {
+    let s = Math.max(0, (d(g) - Date.now())/1000);
+    const D = Math.floor(s/86400), H = Math.floor(s%86400/3600), M = Math.floor(s%3600/60);
+    const cd = $("#cd"); if(cd) cd.innerHTML = `<div><b>${D}</b><span>Tage</span></div><div><b>${H}</b><span>Std</span></div><div><b>${M}</b><span>Min</span></div>`;
+  };
+  tick(); cdTimer = setInterval(tick, 30000);
+}
+
+function renderTiles(){
+  $("#teamTiles").innerHTML = DATA.teams.map(t =>
+    `<button class="tile ${selTeam===t.id?"on":""}" data-act="team" data-id="${t.id}"><b>${esc(t.name)}</b><span>${esc(t.info||"")}</span></button>`).join("");
+}
+
+let bilanzTeam = selTeam === "all" ? DATA?.teams?.[0]?.id : selTeam;
+function renderBilanz(){
+  if(!bilanzTeam) bilanzTeam = DATA.teams[0].id;
+  $("#bilanzSeg").innerHTML = DATA.teams.map(t => `<button class="${bilanzTeam===t.id?"on":""}" data-act="bilanz" data-id="${t.id}">${esc(t.name)}</button>`).join("");
+  const played = DATA.games.filter(g => g.team === bilanzTeam && g.result);
+  const w = played.filter(g => g.result.us > g.result.them).length;
+  const l = played.filter(g => g.result.us < g.result.them && !g.result.ot).length;
+  const o = played.length - w - l;
+  const gf = played.reduce((s,g) => s + g.result.us, 0), ga = played.reduce((s,g) => s + g.result.them, 0);
+  const last = played.slice(-5);
+  $("#bilanz").innerHTML = played.length ? `
+    <div class="stats">
+      <div><b>${played.length}</b><span>Spiele</span></div>
+      <div><b style="color:var(--win)">${w}</b><span>Siege</span></div>
+      <div><b style="color:var(--ot)">${o}</b><span>Unent./n.V.</span></div>
+      <div><b style="color:var(--loss)">${l}</b><span>Niederl.</span></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <div><span class="muted small">Tore</span> <b>${gf}:${ga}</b> <span class="muted small">(${gf-ga>=0?"+":""}${gf-ga})</span></div>
+      <div class="form"><span class="muted small">Form</span>${last.map(g => `<span class="dot ${outcome(g)}" title="${esc(opp(g.opp).name)}">${{W:"S",L:"N",O:"U"}[outcome(g)]}</span>`).join("")}</div>
+    </div>` : `<div class="empty">Noch keine Ergebnisse.</div>`;
+}
+
+function renderNews(){
+  $("#newsList").innerHTML = DATA.news.length ? DATA.news.map(n =>
+    `<div class="news"><span class="muted small">${new Date(n.date).toLocaleDateString("de-DE")}</span><b>${esc(n.title)}</b><div class="small">${esc(n.text)}</div></div>`).join("")
+    : `<div class="empty">Keine News.</div>`;
+}
+
+const reportUrl = g => (DATA.reports || {})[g.date.slice(0, 10)] || g.reportUrl || "";
+function gameRow(g){
+  const x = d(g), o = outcome(g);
+  const sc = g.result ? `<span class="score ${o}">${scoreText(g)}${g.result.ot?"<small style='font-size:.6em'> n.V.</small>":""}</span>`
+                      : `<span class="score none">${x.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}</span>`;
+  const tag = CONFIG.features.gameDetails ? "button" : "div";
+  return `<${tag} class="game" ${CONFIG.features.gameDetails ? `data-act="game" data-id="${g.id}"` : ""}>
+    <div class="date"><b>${x.getDate()}</b><span>${WD[x.getDay()]}</span></div>
+    <div class="gmain"><div class="o">${g.home?"vs":"@"} ${teamLogo(opp(g.opp).name)}${esc(tName(opp(g.opp).name))}</div>
+      <div class="m"><span class="badge ${g.home?"h":""}">${g.home?"HEIM":"AUSW."}</span><span class="badge">${esc(team(g.team).name)}</span></div></div>
+    ${!CONFIG.features.gameDetails && g.result && reportUrl(g) ? `<button class="repchip" data-act="report" data-id="${g.id}" aria-label="Spielbericht">📄</button>` : ""}
+    ${sc}</${tag}>`;
+}
+
+function renderPlan(){
+  const games = filterGames({ team:$("#fTeam").value, place:$("#fPlace").value, time:$("#fTime").value });
+  const stand = LIVE.updated ? `<p class="muted small" style="margin:6px 4px 0">🔄 ${LIVE.loaded.map(t => esc(team(t).name)).join(", ")}: aktueller Verbands-Spielplan, Stand ${new Date(LIVE.updated).toLocaleString("de-DE",{dateStyle:"short",timeStyle:"short"})} Uhr</p>` : "";
+  if(!games.length){ $("#gameList").innerHTML = stand + `<div class="empty">Keine Spiele für diese Auswahl.</div>`; return; }
+  let html = stand, cur = "";
+  games.forEach(g => { const m = `${MON[d(g).getMonth()]} ${d(g).getFullYear()}`; if(m !== cur){ cur = m; html += `<div class="month">${m}</div>`; } html += gameRow(g); });
+  $("#gameList").innerHTML = html;
+}
+
+function renderOpp(){
+  $("#oppList").innerHTML = DATA.opponents.map(o => {
+    const gs = DATA.games.filter(g => g.opp === o.id && g.result);
+    const w = gs.filter(g => g.result.us > g.result.them).length, l = gs.filter(g => g.result.us < g.result.them).length;
+    const next = DATA.games.find(g => g.opp === o.id && !isPast(g));
+    return `<div class="opp">${teamLogo(o.name, "av hasimg")}<div style="flex:1;min-width:0">
+      <b>${esc(tName(o.name))}</b><div class="muted small">${[o.rink, o.address].filter(Boolean).map(esc).join(" · ") || "Spielort noch nicht eingetragen"}</div>
+      <div class="small">Bilanz: ${w} S · ${gs.length-w-l} U · ${l} N${next ? ` · Nächstes: ${d(next).toLocaleDateString("de-DE")} (${esc(team(next.team).name)})` : ""}</div></div>
+      ${o.address ? `<a class="act" style="background:var(--bg);color:var(--navy);padding:8px 10px" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(o.address)}"><i>🧭</i></a>` : ""}</div>`;
+  }).join("");
+}
+
+function renderRules(){
+  $("#rulesList").innerHTML = DATA.rules.map(r => `<details><summary>${esc(r.title)}</summary><p>${esc(r.text)}</p></details>`).join("");
+}
+function renderDownloads(){
+  $("#extraDownloads").innerHTML = DATA.downloads.map(x =>
+    `<a class="dl" href="${esc(x.url)}" target="_blank" rel="noopener"><i>${x.icon||"📎"}</i><div><b>${esc(x.title)}</b><div class="muted small">${esc(x.desc||"")}</div></div></a>`).join("");
+}
+
+function fillTeamSelects(){
+  const opts = `<option value="all">Alle Mannschaften</option>` + DATA.teams.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join("");
+  ["#fTeam","#icsTeam","#pdfTeam"].forEach(s => { const el = $(s), v = el.value; el.innerHTML = opts; el.value = v || selTeam; });
+}
+
+function renderTippBanner(){
+  const g = nextGame(), b = $("#tippBanner");
+  const show = CONFIG.features.tipp && CONFIG.features.gameDetails && g && !g.result && (d(g) - Date.now()) < 7*86400000 && !store.get("tips",{})[g.id] && !store.get("tipNever",[]).includes(g.id) && !sessionHidden.has(g.id);
+  b.style.display = show ? "block" : "none";
+  if(show) $("#tippBannerSub").textContent = `${team(g.team).name}: ${homeName(g)} – ${awayName(g)}, ${fmtDate(g)}. Tippen ist anonym und freiwillig.`;
+}
+
+function singleTeamUi(){
+  const one = DATA.teams.length === 1;
+  $("#teamTiles").closest(".card").style.display = one ? "none" : "";
+  $("#bilanzSeg").style.display = one ? "none" : "";
+  ["#fTeam","#icsTeam","#pdfTeam"].forEach(q => { const el = $(q); el.style.display = one ? "none" : ""; const l = el.previousElementSibling; if(l && l.tagName === "LABEL") l.style.display = one ? "none" : ""; });
+}
+function renderAll(){
+  renderTable(); renderScorer(); renderBadboys();
+  renderHeader(); fillTeamSelects(); renderNext(); renderTiles(); renderBilanz(); renderNews();
+  renderPlan(); renderOpp(); renderRules(); renderDownloads(); renderTippBanner(); renderLegal(); singleTeamUi();
+}
+
+/* ---------- Routing (#start, #spielplan …) ---------- */
+const VIEWS = ["start","spielplan","gegner","regeln","material"];
+function route(){
+  const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "start";
+  $$("section.view").forEach(s => s.classList.toggle("on", s.id === "v-"+v));
+  $$("#nav a").forEach(a => a.classList.toggle("on", a.dataset.v === v));
+  track("page_view_" + v);
+}
+window.addEventListener("hashchange", route);
+
+/* ---------- Modals & Toast ---------- */
+function openM(id){ $("#m-"+id).classList.add("on"); }
+function closeM(el){ el.closest(".modal").classList.remove("on"); }
+$$(".modal").forEach(m => m.addEventListener("click", e => { if(e.target === m) m.classList.remove("on"); }));
+let toastT;
+function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), 2600); }
+function showCopy(title, hint, text){ $("#copyTitle").textContent = title; $("#copyHint").textContent = hint; $("#copyText").textContent = text; openM("copy"); }
+
+/* ---------- Spieldetails + Tipp ---------- */
+let tipDraft = { us:0, them:0 };
+function openGame(id){
+  const g = DATA.games.find(x => x.id === id); if(!g) return;
+  const v = venue(g), tips = store.get("tips", {}), my = tips[g.id];
+  tipDraft = my ? { ...my } : { us:0, them:0 };
+  const past = isPast(g);
+  $("#gameSheet").innerHTML = `
+    <div class="sheet-h"><h2>${esc(team(g.team).name)} · ${g.home?"Heimspiel":"Auswärtsspiel"}</h2><button class="x" data-close>×</button></div>
+    <div class="match" style="color:var(--navy)"><div class="t">${g.home ? usLogo("ml") : teamLogo(opp(g.opp).name, "ml2")}${esc(homeName(g))}</div>
+      <div class="vs" style="color:var(--navy)">${g.result ? scoreText(g) : "vs"}</div><div class="t">${!g.home ? usLogo("ml") : teamLogo(opp(g.opp).name, "ml2")}${esc(awayName(g))}</div></div>
+    ${g.result?.ot ? `<p style="text-align:center;margin:-6px 0 8px" class="muted small">nach Verlängerung/Penalty</p>`:""}
+    <p style="text-align:center;margin:0"><b>${fmtDate(g)} · ${fmtTime(g)}</b><br><span class="muted">${[v.name, v.address].filter(Boolean).map(esc).join(", ") || "Auswärts bei " + esc(opp(g.opp).name)}</span></p>
+    ${!past ? `<div class="actions" style="margin-top:14px">
+      ${routeBtn(g)}
+      <button class="act" data-act="termin" data-id="${g.id}"><i>📅</i>Termin</button>
+      <button class="act" data-act="remind" data-id="${g.id}"><i>⏰</i>Erinnerung</button>
+      <button class="act" data-act="share" data-id="${g.id}"><i>📤</i>Teilen</button></div>
+      ${CONFIG.features.tipp ? `<h3 class="cond" style="margin:20px 0 0;font-size:1.2rem">Dein Tipp ${my ? "✅" : ""}</h3>
+      <div class="tipgrid"><div class="small"><b>${esc(DATA.appName)}</b></div><div></div><div class="small"><b>${esc(opp(g.opp).name)}</b></div>
+        <div class="stepper"><button data-tip="us,-1">−</button><b id="tUs">${tipDraft.us}</b><button data-tip="us,1">+</button></div><div class="cond" style="font-size:1.6rem">:</div>
+        <div class="stepper"><button data-tip="them,-1">−</button><b id="tThem">${tipDraft.them}</b><button data-tip="them,1">+</button></div></div>
+      <button class="btn p" style="width:100%" data-act="saveTip" data-id="${g.id}">${my ? "Tipp ändern" : "Tipp abgeben"}</button>
+      <p class="muted small">${CONFIG.firebase ? "Tipps werden anonym gezählt." : "Dein Tipp wird nur auf diesem Gerät gespeichert."}</p>` : ""}`
+    : `${my ? `<p class="small" style="text-align:center">Dein Tipp: <b>${my.us}:${my.them}</b> ${g.result && my.us===g.result.us && my.them===g.result.them ? "🎯 Volltreffer!" : ""}</p>` : ""}`}
+    ${typeof g.report === "string" && g.report ? `<h3 class="cond" style="margin:18px 0 4px;font-size:1.2rem">Spielbericht</h3><p>${esc(g.report)}</p>` : ""}
+    ${g.result && (reportUrl(g) || g.report?.available) ? `<h3 class="cond" style="margin:18px 0 4px;font-size:1.2rem">Offizieller Spielbericht</h3>` + reportHtml(g) : ""}`;
+  openM("game");
+}
+
+/* ---------- Spielbericht ---------- */
+function reportHtml(g){
+  const url = reportUrl(g), r = g.report;
+  let h = "";
+  if(r && r.available){
+    if(r.periods?.length) h += `<div class="periods">${r.periods.map((p, i) => `<div><b>${esc(g.home ? p : p.split(":").reverse().join(":"))}</b><span>${i < 3 ? (i + 1) + ". Drittel" : "Verl./SO"}</span></div>`).join("")}</div>`;
+    if(r.goals?.length) h += `<h3 class="cond" style="margin:14px 0 4px;font-size:1.15rem">Torfolge</h3>` + r.goals.map(x =>
+      `<div class="goal"><span class="muted">${esc(x.time)}</span>${x.team ? teamLogo(x.team) : "<span></span>"}<b>${esc(x.score)}</b><span>${esc(x.scorer || "")}</span></div>`).join("");
+    if(r.restricted) h += `<p class="muted small">Namen werden nicht angezeigt – der EHV NRW hat sie nicht zur Veröffentlichung freigegeben.</p>`;
+  } else {
+    h += `<p class="muted">Die Details zu diesem Spiel stehen im offiziellen Spielbericht beim EHV NRW.</p>`;
+  }
+  if(url) h += `<a class="btn p" style="display:block;text-align:center;text-decoration:none;margin-top:14px" href="${esc(url)}" target="_blank" rel="noopener">Spielbericht beim EHV NRW öffnen</a>`;
+  return h;
+}
+function openReport(id){
+  const g = DATA.games.find(x => x.id === id); if(!g) return;
+  $("#reportSheet").innerHTML = `<div class="sheet-h"><h2>Spielbericht</h2><button class="x" data-close>×</button></div>
+    <div class="match" style="color:var(--navy)"><div class="t">${g.home ? usLogo("ml") : teamLogo(opp(g.opp).name, "ml2")}${esc(homeName(g))}</div>
+      <div class="vs" style="color:var(--navy)">${scoreText(g)}${g.result.ot ? "<small style='font-size:.5em'> n.V.</small>" : ""}</div>
+      <div class="t">${!g.home ? usLogo("ml") : teamLogo(opp(g.opp).name, "ml2")}${esc(awayName(g))}</div></div>
+    <p style="text-align:center;margin:0" class="muted">${fmtDate(g)} · ${fmtTime(g)}</p>` + reportHtml(g);
+  openM("report");
+}
+
+/* ---------- Kalender (ICS), Route, Teilen ---------- */
+const routeUrl = g => venue(g).address ? "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(venue(g).address) : null;
+const routeBtn = g => routeUrl(g) ? `<a class="act" href="${routeUrl(g)}" target="_blank" rel="noopener"><i>🧭</i>Route</a>` : `<span class="act" style="opacity:.45"><i>🧭</i>Ort folgt</span>`;
+const pad = n => String(n).padStart(2,"0");
+const icsDt = x => `${x.getFullYear()}${pad(x.getMonth()+1)}${pad(x.getDate())}T${pad(x.getHours())}${pad(x.getMinutes())}00`;
+const icsEsc = s => String(s).replace(/[\\;,]/g, m => "\\"+m).replace(/\n/g,"\\n");
+function icsEvent(g, alarmMin){
+  const s = d(g), e = new Date(+s + CONFIG.gameDurationMin*60000), v = venue(g);
+  return ["BEGIN:VEVENT", `UID:${g.id}@${DATA.appName.replace(/\W/g,"")}`, `DTSTAMP:${icsDt(new Date())}`,
+    `DTSTART;TZID=Europe/Berlin:${icsDt(s)}`, `DTEND;TZID=Europe/Berlin:${icsDt(e)}`,
+    `SUMMARY:${icsEsc(`${team(g.team).name}: ${homeName(g)} – ${awayName(g)}`)}`,
+    `LOCATION:${icsEsc(v.name + ", " + v.address)}`,
+    `DESCRIPTION:${icsEsc(g.result ? "Ergebnis " + scoreText(g) : DATA.club + " · " + DATA.season)}`,
+    ...(alarmMin || []).flatMap(m => ["BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:Spiel beginnt bald",`TRIGGER:-PT${m}M`,"END:VALARM"]),
+    "END:VEVENT"].join("\r\n");
+}
+const icsWrap = evs => ["BEGIN:VCALENDAR","VERSION:2.0",`PRODID:-//${DATA.club}//Vereins-App//DE`,"CALSCALE:GREGORIAN",`X-WR-CALNAME:${DATA.appName}`, ...evs, "END:VCALENDAR"].join("\r\n");
+
+async function saveFile(name, data, mime){
+  // In claude.ai: Download über die Plattform. Auf GitHub Pages: normaler Browser-Download.
+  try{
+    if(window.claude && typeof window.claude.use === "function"){
+      const dl = await window.claude.use("downloads");
+      if(dl){ await dl.save({ filename:name, data: data instanceof Blob ? data : new Blob([data]) }); return "ok"; }
+    }
+  }catch(e){ if(e && e.code === "declined") return "declined"; if(e && e.code === "rejected_extension") return "rejected"; }
+  try{
+    const a = document.createElement("a"); a.href = URL.createObjectURL(data instanceof Blob ? data : new Blob([data], { type:mime }));
+    a.download = name; document.body.appendChild(a); a.click(); a.remove(); return "ok";
+  }catch(e){ return "fail"; }
+}
+async function downloadIcs(name, text){
+  const r = await saveFile(name, text, "text/calendar");
+  if(r === "rejected" || r === "fail") showCopy("Kalenderdaten", "Hier ist kein direkter Download möglich. Text kopieren, als .ics-Datei speichern und öffnen – oder die App über GitHub Pages aufrufen.", text);
+  else if(r === "ok") toast("Kalenderdatei erstellt");
+}
+function googleCalUrl(g){
+  const s = d(g), e = new Date(+s + CONFIG.gameDurationMin*60000), v = venue(g);
+  return "https://calendar.google.com/calendar/render?action=TEMPLATE&ctz=Europe/Berlin" +
+    "&text=" + encodeURIComponent(`${team(g.team).name}: ${homeName(g)} – ${awayName(g)}`) +
+    "&dates=" + icsDt(s) + "/" + icsDt(e) + "&location=" + encodeURIComponent(v.name + ", " + v.address);
+}
+async function shareGame(g){
+  const text = `🏒 ${team(g.team).name}: ${homeName(g)} – ${awayName(g)}\n📅 ${fmtDate(g)}, ${fmtTime(g)}\n📍 ${venue(g).name}, ${venue(g).address}`;
+  try{ if(navigator.share){ await navigator.share({ title: DATA.appName, text, url: location.href.split("#")[0] }); return; } }catch(e){ if(e.name === "AbortError") return; }
+  try{ await navigator.clipboard.writeText(text + "\n" + location.href.split("#")[0]); toast("In die Zwischenablage kopiert"); }
+  catch(e){ showCopy("Spiel teilen", "Text kopieren und z. B. in WhatsApp einfügen:", text); }
+}
+
+/* ---------- PDF (jsPDF, wird bei Bedarf geladen) ---------- */
+function loadScript(src){ return new Promise((res, rej) => { const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
+const IMGCACHE = {};
+function imgData(src){
+  if(src in IMGCACHE) return IMGCACHE[src];
+  return IMGCACHE[src] = new Promise(res => { const i = new Image();
+    i.onload = () => { try{ const c = document.createElement("canvas"); c.width = i.naturalWidth; c.height = i.naturalHeight;
+      c.getContext("2d").drawImage(i, 0, 0); res({ url:c.toDataURL("image/png"), w:c.width, h:c.height }); }catch(e){ res(null); } };
+    i.onerror = () => res(null); i.src = src; });
+}
+const logoSrc = code => (DATA.teamLogos || {})[code] || `logos/${code}.png`;
+async function makePdf(){
+  const games = filterGames({ team:$("#pdfTeam").value, place:$("#pdfPlace").value, time:$("#pdfTime").value });
+  if(!games.length) return toast("Keine Spiele für diese Auswahl");
+  try{ if(!window.jspdf) await loadScript("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"); }
+  catch(e){ return toast("PDF-Bibliothek konnte nicht geladen werden"); }
+  const { jsPDF } = window.jspdf, doc = new jsPDF({ unit:"mm", format:"a4" });
+  const oppLogos = {};
+  await Promise.all([...new Set(games.map(g => opp(g.opp).name))].map(async c => oppLogos[c] = await imgData(logoSrc(c))));
+  const W = 210; let y = 0;
+  const head = () => {
+    doc.setFillColor(7,27,51); doc.rect(0,0,W,28,"F");
+    let lx = 14;
+    if(LOGO_DATA){ const h = 20, w = Math.min(30, h * LOGO_DATA.w / LOGO_DATA.h); try{ doc.addImage(LOGO_DATA.url, "PNG", 12, 4, w, h); lx = 12 + w + 4; }catch(e){} }
+    doc.setTextColor(255,255,255); doc.setFont("helvetica","bold"); doc.setFontSize(18); doc.text(`${DATA.appName} – Spielplan`, lx, 13);
+    doc.setFont("helvetica","normal"); doc.setFontSize(10);
+    const tsel = $("#pdfTeam").value;
+    doc.text(`${DATA.club} · ${DATA.season} · ${tsel==="all" ? "Alle Mannschaften" : team(tsel).name}`, lx, 21);
+    y = 38; doc.setTextColor(11,27,46);
+    doc.setFont("helvetica","bold"); doc.setFontSize(9);
+    doc.text("Datum", 14, y); doc.text("Zeit", 46, y); doc.text("Team", 62, y); doc.text("Spiel", 80, y); doc.text("Ort", 150, y); doc.text("Erg.", 188, y);
+    doc.setDrawColor(200); doc.line(14, y+2, W-14, y+2); y += 8; doc.setFont("helvetica","normal");
+  };
+  head();
+  games.forEach((g, i) => {
+    if(y > 280){ doc.addPage(); head(); }
+    if(i % 2 === 0){ doc.setFillColor(238,243,248); doc.rect(12, y-5, W-24, 8, "F"); }
+    const x = d(g);
+    doc.text(`${WD[x.getDay()]} ${pad(x.getDate())}.${pad(x.getMonth()+1)}.${x.getFullYear()}`, 14, y);
+    doc.text(fmtTime(g).replace(" Uhr",""), 46, y);
+    doc.text(team(g.team).name, 62, y);
+    const ol = oppLogos[opp(g.opp).name];
+    if(ol){ const h = 6, w = Math.min(8, h * ol.w / ol.h); try{ doc.addImage(ol.url, "PNG", 86, y - 4.5, w, h); }catch(e){} }
+    doc.text(g.home ? "vs" : "@", 80, y);
+    doc.text(doc.splitTextToSize(tName(opp(g.opp).name), 52)[0], 95, y);
+    doc.text(doc.splitTextToSize(venue(g).name, 36)[0], 150, y);
+    if(g.result){ doc.setFont("helvetica","bold"); doc.text(scoreText(g) + (g.result.ot?"*":""), 188, y); doc.setFont("helvetica","normal"); }
+    y += 8;
+  });
+  doc.setFontSize(8); doc.setTextColor(120); doc.text(`Erstellt am ${new Date().toLocaleDateString("de-DE")} · * = n. V./Penalty · Alle Angaben ohne Gewähr`, 14, 290);
+  const r = await saveFile(`Spielplan_${DATA.appName.replace(/\s/g,"_")}.pdf`, doc.output("blob"), "application/pdf");
+  if(r === "ok") { toast("PDF erstellt"); $("#m-pdf").classList.remove("on"); }
+}
+
+/* ---------- Karte (Leaflet + OpenStreetMap) ---------- */
+async function loadMap(){
+  const box = $("#map"); box.innerHTML = `<span class="muted">Karte wird geladen …</span>`;
+  try{
+    if(!window.L){
+      const css = await fetch("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css").then(r => r.text()).catch(() => "");
+      const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
+      await loadScript("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js");
+    }
+    box.innerHTML = ""; box.style.display = "block";
+    const map = L.map(box).setView([DATA.home.lat, DATA.home.lng], 9);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom:18, attribution:"© OpenStreetMap" }).addTo(map);
+    const pts = [[DATA.home.lat, DATA.home.lng]];
+    (LOGO ? L.marker(pts[0], { icon: L.icon({ iconUrl: LOGO, iconSize:[36,36], iconAnchor:[18,18] }) }) : L.circleMarker(pts[0], { radius:10, color:"#071b33", fillColor:"#ffb703", fillOpacity:1 })).addTo(map).bindPopup(`<b>${esc(DATA.home.name)}</b><br>Heimspielstätte`);
+    DATA.opponents.forEach(o => { if(o.lat == null) return; pts.push([o.lat,o.lng]); L.circleMarker([o.lat,o.lng], { radius:8, color:"#071b33", fillColor:"#5ec8f2", fillOpacity:1 }).addTo(map).bindPopup(`<b>${esc(o.name)}</b><br>${esc(o.rink)}<br>${esc(o.address)}`); });
+    map.fitBounds(pts, { padding:[24,24] });
+  }catch(e){ box.innerHTML = `<span class="muted small" style="padding:20px;text-align:center">Karte konnte hier nicht geladen werden.</span>`; }
+}
+
+/* ---------- Statistik (nur mit Zustimmung) & Push ---------- */
+function track(ev){
+  const log = store.get("visits", []); log.push([Date.now(), ev]); store.set("visits", log.slice(-2000));
+  if(window.gtag) gtag("event", ev);
+}
+function initGA(){
+  if(!CONFIG.gaMeasurementId || !store.get("gaConsent", false) || window.gtag) return;
+  const s = document.createElement("script"); s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + CONFIG.gaMeasurementId; document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || []; window.gtag = function(){ dataLayer.push(arguments); };
+  gtag("js", new Date()); gtag("config", CONFIG.gaMeasurementId, { anonymize_ip:true });
+}
+function initToggles(){
+  const ga = $("#gaToggle"); ga.checked = store.get("gaConsent", false);
+  ga.onchange = () => { store.set("gaConsent", ga.checked); if(ga.checked) initGA(); toast(ga.checked ? "Statistik erlaubt – danke!" : "Statistik deaktiviert"); };
+  const pu = $("#pushToggle");
+  if(!CONFIG.firebase){ pu.disabled = true; $("#pushNote").textContent = "Noch nicht eingerichtet (Firebase-Konfiguration fehlt)"; }
+  pu.checked = store.get("push", false);
+  pu.onchange = async () => {
+    if(!pu.checked){ store.set("push", false); return toast("Push deaktiviert"); }
+    try{ const p = await Notification.requestPermission(); if(p !== "granted") throw 0; store.set("push", true); toast("Push aktiviert"); /* hier Firebase-Messaging-Token holen & speichern */ }
+    catch(e){ pu.checked = false; toast("Benachrichtigungen nicht erlaubt"); }
+  };
+}
+
+/* ---------- Datenschutztext (Vorlage) ---------- */
+function renderLegal(){
+  const S = [
+    ["1. Verantwortlicher", `${CONFIG.responsible}. E-Mail: ${CONFIG.contactEmail}. Privates, nicht kommerzielles Angebot ohne Werbung.`],
+    ["2. Hosting (GitHub Pages)", "Die App wird über GitHub Pages bereitgestellt. Beim Aufruf verarbeitet GitHub technisch notwendige Daten (z. B. IP-Adresse) in Server-Logs."],
+    ["3. Google Firebase", "Für Push-Benachrichtigungen und anonyme Tipps kann Google Firebase genutzt werden. Es werden nur die dafür nötigen technischen Kennungen gespeichert."],
+    ["4. Push-Benachrichtigungen", "Push wird nur nach deiner ausdrücklichen Zustimmung aktiviert und kann jederzeit wieder abgeschaltet werden."],
+    ["5. Feedback", "Angaben im Feedback-Formular (Name, Text, optional E-Mail) werden nur zur Bearbeitung deiner Meldung verwendet."],
+    ["6. Nutzungsstatistik", "Google Analytics wird nur geladen, wenn du zustimmst (Schalter oben). Die IP-Adresse wird gekürzt."],
+    ["7. Logos und Links", "Vereinslogos und -namen gehören den jeweiligen Vereinen. Für Inhalte verlinkter Seiten sind deren Betreiber verantwortlich."],
+    ["8. Kartenbereich", "Die Gegnerkarte nutzt OpenStreetMap und Leaflet (über cdnjs) und wird erst geladen, wenn du „Karte laden“ tippst."],
+    ["9. Lokaler Speicher & deine Rechte", "Einstellungen und Tipps werden im lokalen Speicher deines Browsers abgelegt. Du hast das Recht auf Auskunft, Berichtigung, Löschung und Widerspruch (Art. 15–21 DSGVO) sowie Beschwerde bei einer Aufsichtsbehörde."]
+  ];
+  $("#legalText").innerHTML = `<h3 class="cond" style="font-size:1.2rem">Datenschutzerklärung</h3><p class="muted small">Vorlage – bitte rechtlich prüfen. Stand: ${MON[new Date().getMonth()]} ${new Date().getFullYear()}</p>` +
+    S.map(([h,t]) => `<h3>${esc(h)}</h3><p>${esc(t)}</p>`).join("");
+}
+
+/* ---------- Feedback ---------- */
+let fbType = "Fehler";
+function openFeedback(type){
+  fbType = type || "Fehler";
+  $$("#fbType .opt").forEach(b => b.classList.toggle("on", b.dataset.v === fbType));
+  $("#m-privacy").classList.remove("on"); openM("feedback");
+}
+$("#fbType").addEventListener("click", e => { const b = e.target.closest(".opt"); if(!b) return; fbType = b.dataset.v; $$("#fbType .opt").forEach(x => x.classList.toggle("on", x === b)); });
+$("#fbText").addEventListener("input", e => $("#fbCount").textContent = `${e.target.value.length}/2000`);
+$("#fbForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const fb = { type:fbType, name:$("#fbName").value.trim(), area:$("#fbArea").value, text:$("#fbText").value.trim(), mail:$("#fbMail").value.trim(), version:CONFIG.version, at:new Date().toISOString() };
+  if(!fb.name || !fb.text) return toast("Bitte Name und Beschreibung ausfüllen");
+  const list = store.get("feedback", []); list.unshift(fb); store.set("feedback", list.slice(0,200));
+  const body = `Art: ${fb.type}\nBereich: ${fb.area}\nName: ${fb.name}\nE-Mail: ${fb.mail||"-"}\nVersion: ${fb.version}\n\n${fb.text}`;
+  $("#m-feedback").classList.remove("on"); e.target.reset(); $("#fbCount").textContent = "0/2000";
+  // Ohne Server: per E-Mail weitergeben (mit Firebase: hier in die Datenbank schreiben)
+  showCopy("Meldung vorbereitet", `Bitte an ${CONFIG.contactEmail} schicken – Text kopieren oder unten auf den Link tippen.`, body);
+  $("#copyHint").innerHTML += ` <a href="mailto:${encodeURIComponent(CONFIG.contactEmail)}?subject=${encodeURIComponent("Feedback: "+fb.type+" – "+fb.area)}&body=${encodeURIComponent(body)}">E-Mail öffnen</a>`;
+});
+
+/* ---------- Admin ---------- */
+let adminTab = "spieltag", statRange = "week";
+async function sha256(t){ const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2,"0")).join(""); }
+const isAdmin = () => sessionStorage.getItem("va_admin") === "1";
+function renderAdmin(){
+  const el = $("#adminBody");
+  if(!isAdmin()){
+    el.innerHTML = `<p class="muted small">Status: <b>Nicht angemeldet</b></p>
+      <label class="f" for="pin">PIN</label><input id="pin" type="password" inputmode="numeric" autocomplete="off">
+      <div class="note">Hinweis: Ohne Server ist das nur eine einfache Sperre. Änderungen gelten zunächst nur auf diesem Gerät – über „Technik → Daten exportieren“ übernimmst du sie in die App.</div>
+      <div class="btns"><button class="btn" data-close>Abbrechen</button><button class="btn p" data-act="login">Anmelden</button></div>`;
+    return;
+  }
+  const tabs = [["spieltag","Spieltag"],["inhalte","Inhalte"],["rueck","Rückmeldungen"],["technik","Technik"]];
+  let body = "";
+  if(adminTab === "spieltag"){
+    const gs = DATA.games.filter(g => d(g) < new Date(Date.now() + 2*86400000)).slice(-12).reverse();
+    body = `<p class="muted small">Ergebnisse eintragen (eigene Tore : Gegner)</p>` + gs.map(g => `
+      <div class="arow"><div style="flex:1;min-width:0"><b class="small">${esc(team(g.team).name)} ${g.home?"vs":"@"} ${esc(opp(g.opp).name)}</b><div class="muted small">${d(g).toLocaleDateString("de-DE")}</div></div>
+      <input type="number" min="0" id="us_${g.id}" value="${g.result?.us ?? ""}"><b>:</b><input type="number" min="0" id="th_${g.id}" value="${g.result?.them ?? ""}">
+      <label class="small"><input type="checkbox" id="ot_${g.id}" ${g.result?.ot?"checked":""} style="width:auto"> n.V.</label>
+      <button class="chip solid" data-act="saveRes" data-id="${g.id}">✓</button></div>
+      <input placeholder="Spielbericht (optional)" id="rp_${g.id}" value="${esc(g.report||"")}" style="margin:6px 0 4px">`).join("");
+  } else if(adminTab === "inhalte"){
+    body = `<label class="f">Neue News</label><input id="nTitle" placeholder="Überschrift"><textarea id="nText" rows="3" placeholder="Text" style="margin-top:8px"></textarea>
+      <button class="btn p" style="width:100%;margin-top:8px" data-act="addNews">News veröffentlichen</button>
+      <label class="f">Vorhandene News</label>` + DATA.news.map((n,i) => `<div class="arow"><div style="flex:1"><b class="small">${esc(n.title)}</b><div class="muted small">${new Date(n.date).toLocaleDateString("de-DE")}</div></div><button class="chip" data-act="delNews" data-id="${i}">Löschen</button></div>`).join("");
+  } else if(adminTab === "rueck"){
+    const fb = store.get("feedback", []);
+    body = fb.length ? fb.map(f => `<div class="news"><span class="muted small">${new Date(f.at).toLocaleString("de-DE")} · ${esc(f.type)} · ${esc(f.area)}</span><b>${esc(f.name)}${f.mail?` (${esc(f.mail)})`:""}</b><div class="small">${esc(f.text)}</div></div>`).join("")
+      : `<div class="empty">Keine Rückmeldungen auf diesem Gerät.</div>`;
+    body += `<p class="muted small">Mit Firebase landen hier alle Meldungen zentral.</p>`;
+  } else {
+    const ranges = [["today","Heute"],["week","Diese Woche"],["month","Dieser Monat"],["30","30 Tage"],["season","Saison"],["all","Gesamt"]];
+    const now = new Date(), start = { today:new Date(now.getFullYear(),now.getMonth(),now.getDate()), week:new Date(now - ((now.getDay()+6)%7)*86400000 - (now.getHours()*3600+now.getMinutes()*60)*1000),
+      month:new Date(now.getFullYear(),now.getMonth(),1), "30":new Date(now - 30*86400000), season:new Date(DATA.games[0]?.date || 0), all:new Date(0) }[statRange];
+    const vis = store.get("visits", []).filter(v => v[0] >= +start), by = {};
+    vis.forEach(v => by[v[1]] = (by[v[1]]||0) + 1);
+    body = `<h3 class="cond" style="margin:6px 0">📊 Analytics</h3><div class="tabs">${ranges.map(([k,l]) => `<button class="${statRange===k?"on":""}" data-act="range" data-id="${k}">${l}</button>`).join("")}</div>
+      <div class="stats" style="grid-template-columns:repeat(${CONFIG.features.tipp ? 2 : 1},1fr)"><div><b>${vis.length}</b><span>Aufrufe (dieses Gerät)</span></div>${CONFIG.features.tipp ? `<div><b>${Object.keys(store.get("tips",{})).length}</b><span>eigene Tipps</span></div>` : ""}</div>
+      ${Object.entries(by).sort((a,b)=>b[1]-a[1]).map(([k,v]) => `<div class="arow small"><span style="flex:1">${esc(k.replace("page_view_","Seite: "))}</span><b>${v}</b></div>`).join("")}
+      <button class="btn" style="width:100%;margin-top:8px" data-act="refreshStats">Aktualisieren</button>
+      <p class="muted small">Für Zahlen aller Nutzer: Google Analytics bzw. Firebase einbinden.</p>
+      <h3 class="cond" style="margin:18px 0 6px">⚙️ Daten</h3>
+      <button class="btn" style="width:100%;margin-bottom:8px" data-act="exportData">Daten exportieren (CONFIG)</button>
+      <button class="btn" style="width:100%;margin-bottom:8px" data-act="resetData">Lokale Änderungen verwerfen</button>
+      <button class="btn" style="width:100%" data-act="logout">Abmelden</button>`;
+  }
+  el.innerHTML = `<p class="muted small">Status: <b style="color:var(--win)">Angemeldet</b></p><div class="tabs">${tabs.map(([k,l]) => `<button class="${adminTab===k?"on":""}" data-act="atab" data-id="${k}">${l}</button>`).join("")}</div>${body}`;
+}
+
+/* ---------- Zentrale Klick-Behandlung ---------- */
+document.addEventListener("click", async e => {
+  if(e.target.closest("[data-close]")) return closeM(e.target.closest("[data-close]"));
+  const fbBtn = e.target.closest("[data-fb]"); if(fbBtn) return openFeedback(fbBtn.dataset.fb);
+  const tipBtn = e.target.closest("[data-tip]");
+  if(tipBtn){ const [k, n] = tipBtn.dataset.tip.split(","); tipDraft[k] = Math.max(0, Math.min(30, tipDraft[k] + +n)); $("#tUs").textContent = tipDraft.us; $("#tThem").textContent = tipDraft.them; return; }
+  const b = e.target.closest("[data-act]"); if(!b) return;
+  const id = b.dataset.id, g = id && DATA.games.find(x => x.id === id);
+  switch(b.dataset.act){
+    case "about": openM("about"); break;
+    case "privacy": openM("privacy"); break;
+    case "admin": renderAdmin(); openM("admin"); break;
+    case "team": selTeam = selTeam === id ? "all" : id; store.set("team", selTeam); if(selTeam !== "all") bilanzTeam = selTeam;
+      fillTeamSelects(); $("#fTeam").value = selTeam; renderNext(); renderTiles(); renderBilanz(); renderPlan(); renderTippBanner(); break;
+    case "bilanz": bilanzTeam = id; renderBilanz(); break;
+    case "scorerView": scorerView = id; renderScorer(); break;
+    case "badView": badView = id; renderBadboys(); break;
+    case "game": if(CONFIG.features.gameDetails) openGame(id); break;
+    case "report": openReport(id); break;
+    case "termin":
+      if(/Android/i.test(navigator.userAgent)) window.open(googleCalUrl(g), "_blank");
+      else downloadIcs(`Spiel_${g.id}.ics`, icsWrap([icsEvent(g)])); break;
+    case "remind": downloadIcs(`Erinnerung_${g.id}.ics`, icsWrap([icsEvent(g, [24*60, 120])])); break;
+    case "share": shareGame(g); break;
+    case "saveTip": { const t = store.get("tips", {}); t[id] = { ...tipDraft }; store.set("tips", t); track("tip"); toast(`Tipp gespeichert: ${tipDraft.us}:${tipDraft.them}`); renderTippBanner(); openGame(id); break; }
+    case "tipNow": if(!CONFIG.features.tipp) break; { const n = nextGame(); if(n) openGame(n.id); break; }
+    case "tipLater": { const n = nextGame(); if(n) sessionHidden.add(n.id); renderTippBanner(); break; }
+    case "tipNever": { const n = nextGame(); if(n){ const l = store.get("tipNever", []); l.push(n.id); store.set("tipNever", l); } renderTippBanner(); break; }
+    case "openIcs": $("#icsTeam").value = selTeam; openM("ics"); break;
+    case "openPdf": $("#pdfTeam").value = selTeam; updPdfHint(); openM("pdf"); break;
+    case "doIcs": {
+      const gs = filterGames({ team:$("#icsTeam").value, place:$("#icsPlace").value, time:$("#icsTime").value });
+      if(!gs.length) return toast("Keine Spiele für diese Auswahl");
+      $("#m-ics").classList.remove("on"); downloadIcs(`${DATA.appName.replace(/\s/g,"_")}_Spielplan.ics`, icsWrap(gs.map(x => icsEvent(x)))); break; }
+    case "doPdf": makePdf(); break;
+    case "doCopy": try{ await navigator.clipboard.writeText($("#copyText").textContent); toast("Kopiert"); }catch(err){ toast("Bitte Text markieren und kopieren"); } break;
+    case "loadMap": loadMap(); break;
+    case "login": { const ok = (await sha256($("#pin").value)) === CONFIG.adminPinSha256; if(ok){ sessionStorage.setItem("va_admin","1"); renderAdmin(); } else toast("Falsche PIN"); break; }
+    case "logout": sessionStorage.removeItem("va_admin"); renderAdmin(); break;
+    case "atab": adminTab = id; renderAdmin(); break;
+    case "range": statRange = id; renderAdmin(); break;
+    case "refreshStats": renderAdmin(); toast("Aktualisiert"); break;
+    case "saveRes": {
+      const us = $("#us_"+id).value, th = $("#th_"+id).value, o = overlay();
+      o.games[id] = { result: us === "" || th === "" ? null : { us:+us, them:+th, ot:$("#ot_"+id).checked }, report: $("#rp_"+id).value.trim() };
+      saveOverlay(o); renderAdmin(); toast("Ergebnis gespeichert"); break; }
+    case "addNews": {
+      const t = $("#nTitle").value.trim(), x = $("#nText").value.trim(); if(!t) return toast("Überschrift fehlt");
+      const o = overlay(); o.news = [{ date:new Date().toISOString().slice(0,10), title:t, text:x }, ...DATA.news]; saveOverlay(o); renderAdmin(); toast("News veröffentlicht"); break; }
+    case "delNews": { const o = overlay(); const n = [...DATA.news]; n.splice(+id, 1); o.news = n; saveOverlay(o); renderAdmin(); break; }
+    case "exportData": {
+      const out = { ...CONFIG, games: DATA.games, news: DATA.news };
+      const txt = "const CONFIG = " + JSON.stringify(out, null, 2) + ";";
+      showCopy("Daten exportieren", "Diesen Block in index.html anstelle von „const CONFIG = {…};“ einsetzen und hochladen – dann sehen alle die Änderungen.", txt); break; }
+    case "resetData": store.set("overlay", { games:{}, news:null }); loadData(); renderAll(); renderAdmin(); toast("Lokale Änderungen verworfen"); break;
+  }
+});
+function updPdfHint(){ const t = $("#pdfTime").value; $("#pdfHint").textContent = t === "all" ? "Hinweis: Es werden alle Spiele gedruckt." : t === "next" ? "Es werden nur kommende Spiele gedruckt." : "Es werden nur gespielte Partien mit Ergebnis gedruckt."; }
+$("#pdfTime").addEventListener("change", updPdfHint);
+["#fTeam","#fPlace","#fTime"].forEach(s => $(s).addEventListener("change", renderPlan));
+
+/* ---------- Start ---------- */
+loadData();
+bilanzTeam = selTeam === "all" ? DATA.teams[0].id : selTeam;
+renderAll(); route(); initToggles(); initGA(); loadLive(); initLogo();
+</script>
+</body>
+</html>

@@ -1,0 +1,1231 @@
+{
+ "updated": "2026-11-22T13:57:00Z",
+ "source": "https://ehv-nrw.de/leagues/league/u13/lln/70/",
+ "standings": [
+  {
+   "rank": 1,
+   "team": "EAD",
+   "gp": 7,
+   "diff": 114,
+   "pts": 21
+  },
+  {
+   "rank": 2,
+   "team": "NEV",
+   "gp": 9,
+   "diff": 59,
+   "pts": 21
+  },
+  {
+   "rank": 3,
+   "team": "BKM",
+   "gp": 8,
+   "diff": 19,
+   "pts": 18
+  },
+  {
+   "rank": 4,
+   "team": "TRO2",
+   "gp": 8,
+   "diff": -15,
+   "pts": 14
+  },
+  {
+   "rank": 5,
+   "team": "RIA",
+   "gp": 8,
+   "diff": 24,
+   "pts": 12
+  },
+  {
+   "rank": 6,
+   "team": "NEU",
+   "gp": 8,
+   "diff": 13,
+   "pts": 10
+  },
+  {
+   "rank": 7,
+   "team": "ECBL",
+   "gp": 7,
+   "diff": -14,
+   "pts": 9
+  },
+  {
+   "rank": 8,
+   "team": "LHH",
+   "gp": 3,
+   "diff": 14,
+   "pts": 6
+  },
+  {
+   "rank": 9,
+   "team": "DIN",
+   "gp": 7,
+   "diff": -99,
+   "pts": 3
+  },
+  {
+   "rank": 10,
+   "team": "EVD2",
+   "gp": 8,
+   "diff": -41,
+   "pts": 3
+  },
+  {
+   "rank": 11,
+   "team": "ESS",
+   "gp": 5,
+   "diff": -74,
+   "pts": 0
+  }
+ ],
+ "games": [
+  {
+   "id": "u13lln-001",
+   "date": "2026-09-05T11:45",
+   "home": "TRO2",
+   "away": "NEV",
+   "venue": "",
+   "result": {
+    "home": 12,
+    "away": 6,
+    "ot": false
+   },
+   "status": "strafverifiziert"
+  },
+  {
+   "id": "u13lln-002",
+   "date": "2026-09-12T10:15",
+   "home": "NEU",
+   "away": "EVD2",
+   "venue": "",
+   "result": {
+    "home": 12,
+    "away": 6,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-003",
+   "date": "2026-09-18T19:30",
+   "home": "EVD2",
+   "away": "RIA",
+   "venue": "",
+   "result": {
+    "home": 7,
+    "away": 15,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-004",
+   "date": "2026-09-20T12:30",
+   "home": "DIN",
+   "away": "TRO2",
+   "venue": "",
+   "result": {
+    "home": 8,
+    "away": 16,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-005",
+   "date": "2026-09-25T20:00",
+   "home": "NEV",
+   "away": "RIA",
+   "venue": "",
+   "result": {
+    "home": 10,
+    "away": 5,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-006",
+   "date": "2026-09-27T09:00",
+   "home": "BKM",
+   "away": "RIA",
+   "venue": "",
+   "result": {
+    "home": 6,
+    "away": 5,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-007",
+   "date": "2026-09-27T18:00",
+   "home": "TRO2",
+   "away": "ECBL",
+   "venue": "",
+   "result": {
+    "home": 9,
+    "away": 8,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-008",
+   "date": "2026-10-03T09:00",
+   "home": "LHH",
+   "away": "ECBL",
+   "venue": "",
+   "result": {
+    "home": 11,
+    "away": 1,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-009",
+   "date": "2026-10-03T10:00",
+   "home": "TRO2",
+   "away": "NEU",
+   "venue": "",
+   "result": {
+    "home": 9,
+    "away": 8,
+    "ot": true
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-010",
+   "date": "2026-10-03T18:00",
+   "home": "NEV",
+   "away": "ESS",
+   "venue": "",
+   "result": {
+    "home": 10,
+    "away": 3,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-011",
+   "date": "2026-10-04T09:00",
+   "home": "BKM",
+   "away": "NEU",
+   "venue": "",
+   "result": {
+    "home": 6,
+    "away": 5,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-012",
+   "date": "2026-10-04T12:30",
+   "home": "DIN",
+   "away": "EAD",
+   "venue": "",
+   "result": {
+    "home": 0,
+    "away": 31,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-013",
+   "date": "2026-10-09T17:15",
+   "home": "ECBL",
+   "away": "BKM",
+   "venue": "",
+   "result": {
+    "home": 7,
+    "away": 6,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-014",
+   "date": "2026-10-11T12:30",
+   "home": "DIN",
+   "away": "NEU",
+   "venue": "",
+   "result": {
+    "home": 6,
+    "away": 16,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-015",
+   "date": "2026-10-11T13:30",
+   "home": "EAD",
+   "away": "TRO2",
+   "venue": "",
+   "result": {
+    "home": 18,
+    "away": 1,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-016",
+   "date": "2026-10-11T17:00",
+   "home": "RIA",
+   "away": "EVD2",
+   "venue": "",
+   "result": {
+    "home": 14,
+    "away": 3,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-017",
+   "date": "2026-10-16T17:30",
+   "home": "ECBL",
+   "away": "EAD",
+   "venue": "",
+   "result": {
+    "home": 0,
+    "away": 14,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-018",
+   "date": "2026-10-16T19:30",
+   "home": "EVD2",
+   "away": "DIN",
+   "venue": "",
+   "result": {
+    "home": 8,
+    "away": 11,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-019",
+   "date": "2026-10-17T12:30",
+   "home": "ESS",
+   "away": "EVD2",
+   "venue": "",
+   "result": {
+    "home": 5,
+    "away": 13,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-020",
+   "date": "2026-10-18T09:00",
+   "home": "BKM",
+   "away": "NEV",
+   "venue": "",
+   "result": {
+    "home": 5,
+    "away": 4,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-021",
+   "date": "2026-10-18T13:30",
+   "home": "EAD",
+   "away": "NEU",
+   "venue": "",
+   "result": {
+    "home": 17,
+    "away": 1,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-022",
+   "date": "2026-10-24T10:00",
+   "home": "TRO2",
+   "away": "BKM",
+   "venue": "",
+   "result": {
+    "home": 4,
+    "away": 1,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-023",
+   "date": "2026-10-24T18:00",
+   "home": "NEV",
+   "away": "DIN",
+   "venue": "",
+   "result": {
+    "home": 18,
+    "away": 4,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-024",
+   "date": "2026-10-30T17:15",
+   "home": "ECBL",
+   "away": "DIN",
+   "venue": "",
+   "result": {
+    "home": 18,
+    "away": 1,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-025",
+   "date": "2026-10-31T10:00",
+   "home": "EVD2",
+   "away": "NEV",
+   "venue": "",
+   "result": {
+    "home": 5,
+    "away": 13,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-026",
+   "date": "2026-10-31T10:15",
+   "home": "NEU",
+   "away": "BKM",
+   "venue": "",
+   "result": {
+    "home": 7,
+    "away": 9,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-027",
+   "date": "2026-11-01T17:00",
+   "home": "RIA",
+   "away": "ECBL",
+   "venue": "",
+   "result": {
+    "home": 15,
+    "away": 4,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-028",
+   "date": "2026-11-07T10:30",
+   "home": "LHH",
+   "away": "NEV",
+   "venue": "",
+   "result": {
+    "home": 6,
+    "away": 7,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-029",
+   "date": "2026-11-07T12:30",
+   "home": "ESS",
+   "away": "NEU",
+   "venue": "",
+   "result": {
+    "home": 3,
+    "away": 26,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-030",
+   "date": "2026-11-08T09:00",
+   "home": "BKM",
+   "away": "TRO2",
+   "venue": "",
+   "result": {
+    "home": 12,
+    "away": 3,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-031",
+   "date": "2026-11-08T10:15",
+   "home": "ESS",
+   "away": "NEV",
+   "venue": "",
+   "result": {
+    "home": 3,
+    "away": 26,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-032",
+   "date": "2026-11-08T13:30",
+   "home": "EAD",
+   "away": "DIN",
+   "venue": "",
+   "result": {
+    "home": 27,
+    "away": 5,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-033",
+   "date": "2026-11-08T17:00",
+   "home": "RIA",
+   "away": "LHH",
+   "venue": "",
+   "result": {
+    "home": 4,
+    "away": 9,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-034",
+   "date": "2026-11-13T17:15",
+   "home": "ECBL",
+   "away": "EVD2",
+   "venue": "",
+   "result": {
+    "home": 8,
+    "away": 4,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-035",
+   "date": "2026-11-14T11:00",
+   "home": "RIA",
+   "away": "EAD",
+   "venue": "",
+   "result": {
+    "home": 3,
+    "away": 11,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-036",
+   "date": "2026-11-14T18:00",
+   "home": "NEV",
+   "away": "TRO2",
+   "venue": "",
+   "result": {
+    "home": 11,
+    "away": 3,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-037",
+   "date": "2026-11-21T10:00",
+   "home": "EVD2",
+   "away": "BKM",
+   "venue": "",
+   "result": {
+    "home": 1,
+    "away": 10,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-038",
+   "date": "2026-11-21T10:15",
+   "home": "NEU",
+   "away": "EAD",
+   "venue": "",
+   "result": {
+    "home": 4,
+    "away": 10,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-039",
+   "date": "2026-11-22T10:15",
+   "home": "ESS",
+   "away": "RIA",
+   "venue": "",
+   "result": {
+    "home": 2,
+    "away": 15,
+    "ot": false
+   },
+   "status": ""
+  },
+  {
+   "id": "u13lln-040",
+   "date": "2026-11-22T18:00",
+   "home": "TRO2",
+   "away": "DIN",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-041",
+   "date": "2026-11-26T18:00",
+   "home": "BKM",
+   "away": "LHH",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-042",
+   "date": "2026-11-27T17:15",
+   "home": "ECBL",
+   "away": "RIA",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-043",
+   "date": "2026-11-28T10:15",
+   "home": "NEU",
+   "away": "ESS",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-044",
+   "date": "2026-11-28T18:00",
+   "home": "NEV",
+   "away": "LHH",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-045",
+   "date": "2026-11-29T12:30",
+   "home": "DIN",
+   "away": "LHH",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-046",
+   "date": "2026-12-03T18:30",
+   "home": "EVD2",
+   "away": "ESS",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-047",
+   "date": "2026-12-04T17:15",
+   "home": "ECBL",
+   "away": "ESS",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-048",
+   "date": "2026-12-05T12:30",
+   "home": "ESS",
+   "away": "TRO2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-049",
+   "date": "2026-12-05T18:00",
+   "home": "NEV",
+   "away": "EVD2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-050",
+   "date": "2026-12-06T08:00",
+   "home": "LHH",
+   "away": "RIA",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-051",
+   "date": "2026-12-06T10:15",
+   "home": "ESS",
+   "away": "DIN",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-052",
+   "date": "2026-12-06T13:30",
+   "home": "EAD",
+   "away": "BKM",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-053",
+   "date": "2026-12-11T17:15",
+   "home": "ECBL",
+   "away": "NEV",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-054",
+   "date": "2026-12-12T10:15",
+   "home": "NEU",
+   "away": "LHH",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-055",
+   "date": "2026-12-13T09:00",
+   "home": "BKM",
+   "away": "EAD",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-056",
+   "date": "2026-12-18T17:15",
+   "home": "ECBL",
+   "away": "TRO2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-057",
+   "date": "2026-12-20T12:30",
+   "home": "DIN",
+   "away": "BKM",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-058",
+   "date": "2027-01-02T10:00",
+   "home": "TRO2",
+   "away": "EVD2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-059",
+   "date": "2027-01-03T13:30",
+   "home": "EAD",
+   "away": "EVD2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-060",
+   "date": "2027-01-06T18:15",
+   "home": "EAD",
+   "away": "ESS",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-061",
+   "date": "2027-01-09T10:15",
+   "home": "NEU",
+   "away": "TRO2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-062",
+   "date": "2027-01-09T10:30",
+   "home": "LHH",
+   "away": "ESS",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-063",
+   "date": "2027-01-09T12:30",
+   "home": "DIN",
+   "away": "NEV",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-064",
+   "date": "2027-01-10T08:00",
+   "home": "EAD",
+   "away": "RIA",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-065",
+   "date": "2027-01-10T09:00",
+   "home": "BKM",
+   "away": "ECBL",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-066",
+   "date": "2027-01-15T19:30",
+   "home": "EVD2",
+   "away": "TRO2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-067",
+   "date": "2027-01-16T10:00",
+   "home": "EVD2",
+   "away": "LHH",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-068",
+   "date": "2027-01-16T10:15",
+   "home": "NEU",
+   "away": "NEV",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-069",
+   "date": "2027-01-17T08:00",
+   "home": "LHH",
+   "away": "NEU",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-070",
+   "date": "2027-01-17T09:00",
+   "home": "BKM",
+   "away": "EVD2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-071",
+   "date": "2027-01-17T17:00",
+   "home": "RIA",
+   "away": "ESS",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-072",
+   "date": "2027-01-22T19:00",
+   "home": "ECBL",
+   "away": "LHH",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-073",
+   "date": "2027-01-22T20:15",
+   "home": "TRO2",
+   "away": "RIA",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-074",
+   "date": "2027-01-23T10:15",
+   "home": "NEU",
+   "away": "DIN",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-075",
+   "date": "2027-01-23T12:30",
+   "home": "ESS",
+   "away": "EAD",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-076",
+   "date": "2027-01-24T10:15",
+   "home": "ESS",
+   "away": "BKM",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-077",
+   "date": "2027-01-29T20:00",
+   "home": "ECBL",
+   "away": "NEU",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-078",
+   "date": "2027-01-30T10:30",
+   "home": "LHH",
+   "away": "DIN",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-079",
+   "date": "2027-01-30T18:00",
+   "home": "NEV",
+   "away": "NEU",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-080",
+   "date": "2027-01-31T12:30",
+   "home": "DIN",
+   "away": "ESS",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-081",
+   "date": "2027-01-31T17:00",
+   "home": "RIA",
+   "away": "NEV",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-082",
+   "date": "2027-01-31T18:00",
+   "home": "TRO2",
+   "away": "ESS",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-083",
+   "date": "2027-02-06T10:30",
+   "home": "LHH",
+   "away": "TRO2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-084",
+   "date": "2027-02-07T09:00",
+   "home": "BKM",
+   "away": "ESS",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-085",
+   "date": "2027-02-13T10:15",
+   "home": "NEU",
+   "away": "ECBL",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-086",
+   "date": "2027-02-13T18:00",
+   "home": "NEV",
+   "away": "BKM",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-087",
+   "date": "2027-02-14T08:00",
+   "home": "LHH",
+   "away": "EVD2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-088",
+   "date": "2027-02-14T12:30",
+   "home": "DIN",
+   "away": "RIA",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-089",
+   "date": "2027-02-14T13:30",
+   "home": "EAD",
+   "away": "NEV",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-090",
+   "date": "2027-02-20T10:00",
+   "home": "TRO2",
+   "away": "LHH",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-091",
+   "date": "2027-02-20T10:00",
+   "home": "EVD2",
+   "away": "NEU",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-092",
+   "date": "2027-02-20T11:00",
+   "home": "RIA",
+   "away": "BKM",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-093",
+   "date": "2027-02-20T18:00",
+   "home": "NEV",
+   "away": "ECBL",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-094",
+   "date": "2027-02-21T08:00",
+   "home": "LHH",
+   "away": "EAD",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-095",
+   "date": "2027-02-21T09:00",
+   "home": "BKM",
+   "away": "DIN",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-096",
+   "date": "2027-02-26T19:30",
+   "home": "EVD2",
+   "away": "EAD",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-097",
+   "date": "2027-02-27T10:15",
+   "home": "NEU",
+   "away": "RIA",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-098",
+   "date": "2027-02-27T10:30",
+   "home": "LHH",
+   "away": "BKM",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-099",
+   "date": "2027-02-27T18:00",
+   "home": "NEV",
+   "away": "EAD",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-100",
+   "date": "2027-02-28T10:15",
+   "home": "ESS",
+   "away": "LHH",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-101",
+   "date": "2027-02-28T12:30",
+   "home": "DIN",
+   "away": "ECBL",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-102",
+   "date": "2027-03-06T11:00",
+   "home": "RIA",
+   "away": "DIN",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-103",
+   "date": "2027-03-07T12:30",
+   "home": "DIN",
+   "away": "EVD2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-104",
+   "date": "2027-03-07T13:30",
+   "home": "EAD",
+   "away": "ECBL",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-105",
+   "date": "2027-03-12T19:30",
+   "home": "EVD2",
+   "away": "ECBL",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-106",
+   "date": "2027-03-13T11:00",
+   "home": "RIA",
+   "away": "TRO2",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-107",
+   "date": "2027-03-14T08:00",
+   "home": "EAD",
+   "away": "LHH",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-108",
+   "date": "2027-03-14T10:15",
+   "home": "ESS",
+   "away": "ECBL",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-109",
+   "date": "2027-03-20T10:00",
+   "home": "TRO2",
+   "away": "EAD",
+   "venue": "",
+   "result": null,
+   "status": ""
+  },
+  {
+   "id": "u13lln-110",
+   "date": "2027-03-20T11:00",
+   "home": "RIA",
+   "away": "NEU",
+   "venue": "",
+   "result": null,
+   "status": ""
+  }
+ ]
+}
